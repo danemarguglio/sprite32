@@ -1,0 +1,3123 @@
+{
+ "totals": {
+  "images": 660585,
+  "sources": 270,
+  "missing_licence_record": 0,
+  "by_family": {
+   "Public domain / CC0": 236141,
+   "Permissive (keep notice)": 155562,
+   "Attribution": 149929,
+   "Share-alike / copyleft": 118466,
+   "Other": 487
+  },
+  "by_family_status": {
+   "Attribution | conditions": 58087,
+   "Attribution | stated": 91842,
+   "Other | conditions": 474,
+   "Other | verified": 13,
+   "Permissive (keep notice) | conditions": 874,
+   "Permissive (keep notice) | stated": 220,
+   "Permissive (keep notice) | verified": 154468,
+   "Public domain / CC0 | conditions": 204,
+   "Public domain / CC0 | generated": 60000,
+   "Public domain / CC0 | stated": 25536,
+   "Public domain / CC0 | verified": 150401,
+   "Share-alike / copyleft | conditions": 117453,
+   "Share-alike / copyleft | verified": 1013
+  },
+  "by_status": {
+   "conditions": 177092,
+   "verified": 305895,
+   "stated": 117598,
+   "generated": 60000
+  }
+ },
+ "sources": {
+  "iconify_mono": {
+   "images": 125423,
+   "licenses": {
+    "OFL-1.1": 1024,
+    "MIT": 66394,
+    "CC-BY-4.0": 16083,
+    "Apache-2.0": 31429,
+    "CC0-1.0": 3878,
+    "ISC": 3584,
+    "MIT AND CC-BY-4.0": 2520,
+    "BSD-3-Clause": 122,
+    "Unlicense": 389
+   },
+   "status": {
+    "verified": 105744,
+    "conditions": 17405,
+    "stated": 2274
+   },
+   "upstream": ""
+  },
+  "rendered_text": {
+   "images": 60000,
+   "licenses": {
+    "CC0-1.0": 60000
+   },
+   "status": {
+    "generated": 60000
+   },
+   "upstream": ""
+  },
+  "iconify_color": {
+   "images": 50607,
+   "licenses": {
+    "CC0-1.0": 182,
+    "CC-BY-4.0": 15165,
+    "MIT": 27431,
+    "Apache-2.0": 7829
+   },
+   "status": {
+    "verified": 35409,
+    "conditions": 15198
+   },
+   "upstream": ""
+  },
+  "oga_ccby3": {
+   "images": 42021,
+   "licenses": {
+    "CC-BY-3.0": 41754,
+    "CC-BY-2.5": 267
+   },
+   "status": {
+    "stated": 41754,
+    "conditions": 267
+   },
+   "upstream": "https://opengameart.org"
+  },
+  "kenney": {
+   "images": 40734,
+   "licenses": {
+    "CC0-1.0": 40734
+   },
+   "status": {
+    "verified": 40621,
+    "conditions": 113
+   },
+   "upstream": ""
+  },
+  "opengameart_cc0": {
+   "images": 29317,
+   "licenses": {
+    "CC0-1.0": 29317
+   },
+   "status": {
+    "stated": 23115,
+    "verified": 6202
+   },
+   "upstream": "https://opengameart.org"
+  },
+  "openclipart": {
+   "images": 26242,
+   "licenses": {
+    "CC0-1.0": 26242
+   },
+   "status": {
+    "verified": 26154,
+    "conditions": 88
+   },
+   "upstream": "https://openclipart.org"
+  },
+  "oga_ccby4": {
+   "images": 24829,
+   "licenses": {
+    "CC-BY-4.0": 24829
+   },
+   "status": {
+    "stated": 24829
+   },
+   "upstream": "https://opengameart.org"
+  },
+  "oga_mixed": {
+   "images": 22183,
+   "licenses": {
+    "CC0-1.0": 2238,
+    "CC-BY-3.0": 10188,
+    "CC-BY-4.0": 9342,
+    "OGA-BY-3.0": 148,
+    "OGA-BY-4.0": 267
+   },
+   "status": {
+    "stated": 22183
+   },
+   "upstream": "https://opengameart.org"
+  },
+  "opengameart": {
+   "images": 17121,
+   "licenses": {
+    "CC0-1.0": 17121
+   },
+   "status": {
+    "verified": 17121
+   },
+   "upstream": ""
+  },
+  "itch_cc0_more": {
+   "images": 13006,
+   "licenses": {
+    "CC0-1.0": 10735,
+    "CC-BY-4.0": 2271
+   },
+   "status": {
+    "verified": 10735,
+    "conditions": 2271
+   },
+   "upstream": ""
+  },
+  "tgstation": {
+   "images": 11924,
+   "licenses": {
+    "CC-BY-SA-3.0": 11924
+   },
+   "status": {
+    "conditions": 11924
+   },
+   "upstream": "https://github.com/tgstation/tgstation"
+  },
+  "itch_cc0": {
+   "images": 10897,
+   "licenses": {
+    "CC0-1.0": 10349,
+    "CC-BY-4.0": 548
+   },
+   "status": {
+    "verified": 10294,
+    "conditions": 548,
+    "stated": 55
+   },
+   "upstream": ""
+  },
+  "vgstation13": {
+   "images": 9912,
+   "licenses": {
+    "CC-BY-SA-3.0": 9912
+   },
+   "status": {
+    "conditions": 9912
+   },
+   "upstream": "https://github.com/vgstation-coders/vgstation13"
+  },
+  "kenney_extra": {
+   "images": 9695,
+   "licenses": {
+    "CC0-1.0": 9695
+   },
+   "status": {
+    "verified": 9695
+   },
+   "upstream": "https://kenney.nl"
+  },
+  "oga_ccbysa3": {
+   "images": 9171,
+   "licenses": {
+    "CC-BY-SA-3.0": 9171
+   },
+   "status": {
+    "conditions": 9171
+   },
+   "upstream": "https://opengameart.org"
+  },
+  "paradise": {
+   "images": 6324,
+   "licenses": {
+    "CC-BY-SA-3.0": 6324
+   },
+   "status": {
+    "conditions": 6324
+   },
+   "upstream": "https://github.com/ParadiseSS13/Paradise"
+  },
+  "oga_ccbysa4": {
+   "images": 6187,
+   "licenses": {
+    "CC-BY-SA-4.0": 6187
+   },
+   "status": {
+    "conditions": 6187
+   },
+   "upstream": "https://opengameart.org"
+  },
+  "papirus_32": {
+   "images": 6140,
+   "licenses": {
+    "GPL-3.0-only": 6140
+   },
+   "status": {
+    "conditions": 6140
+   },
+   "upstream": "https://github.com/PapirusDevelopmentTeam/papirus-icon-theme"
+  },
+  "shiptest": {
+   "images": 6063,
+   "licenses": {
+    "CC-BY-SA-3.0": 6063
+   },
+   "status": {
+    "conditions": 6063
+   },
+   "upstream": "https://github.com/shiptest-ss13/Shiptest"
+  },
+  "dcss": {
+   "images": 4837,
+   "licenses": {
+    "CC0-1.0": 4837
+   },
+   "status": {
+    "verified": 4709,
+    "stated": 128
+   },
+   "upstream": "https://github.com/crawl/crawl"
+  },
+  "cdda_msx": {
+   "images": 4065,
+   "licenses": {
+    "CC-BY-SA-3.0": 4065
+   },
+   "status": {
+    "conditions": 4065
+   },
+   "upstream": "https://github.com/I-am-Erk/CDDA-Tilesets"
+  },
+  "openmoji": {
+   "images": 3906,
+   "licenses": {
+    "CC-BY-SA-4.0": 3906
+   },
+   "status": {
+    "conditions": 3906
+   },
+   "upstream": "https://openmoji.org"
+  },
+  "fatcow": {
+   "images": 3521,
+   "licenses": {
+    "CC-BY-3.0-US": 3521
+   },
+   "status": {
+    "conditions": 3521
+   },
+   "upstream": "https://www.fatcow.com"
+  },
+  "game-icons.net": {
+   "images": 3455,
+   "licenses": {
+    "CC-BY-3.0": 3356,
+    "CC0-1.0": 99
+   },
+   "status": {
+    "conditions": 3356,
+    "verified": 99
+   },
+   "upstream": "https://game-icons.net"
+  },
+  "svg_icons": {
+   "images": 3377,
+   "licenses": {
+    "ISC": 1534,
+    "Apache-2.0": 1843
+   },
+   "status": {
+    "verified": 3377
+   },
+   "upstream": ""
+  },
+  "oga_ogaby3": {
+   "images": 3260,
+   "licenses": {
+    "OGA-BY-3.0": 3260
+   },
+   "status": {
+    "stated": 3260
+   },
+   "upstream": "https://opengameart.org"
+  },
+  "mulberry": {
+   "images": 3239,
+   "licenses": {
+    "CC-BY-SA-4.0": 3239
+   },
+   "status": {
+    "conditions": 3239
+   },
+   "upstream": "https://github.com/mulberrysymbols/mulberry-symbols"
+  },
+  "cdda_ultica": {
+   "images": 3151,
+   "licenses": {
+    "CC-BY-SA-3.0": 3151
+   },
+   "status": {
+    "conditions": 3151
+   },
+   "upstream": "https://github.com/I-am-Erk/CDDA-Tilesets"
+  },
+  "fugue": {
+   "images": 2816,
+   "licenses": {
+    "CC-BY-3.0": 2816
+   },
+   "status": {
+    "conditions": 2816
+   },
+   "upstream": "https://p.yusukekamiyamane.com"
+  },
+  "luanti_sa": {
+   "images": 2699,
+   "licenses": {
+    "LGPL-2.1-only": 125,
+    "CC-BY-SA-3.0": 896,
+    "CC-BY-3.0 AND CC-BY-SA-3.0": 129,
+    "CC-BY-SA-4.0": 1113,
+    "GPL-3.0-only": 144,
+    "MIT AND CC-BY-SA-3.0": 82,
+    "MIT AND CC-BY-SA-4.0": 12,
+    "CC-BY-4.0 AND CC-BY-SA-3.0": 47,
+    "LGPL-3.0-only": 8,
+    "CC-BY-4.0 AND CC-BY-SA-4.0": 26,
+    "CC0-1.0 AND CC-BY-SA-3.0": 36,
+    "CC0-1.0 AND CC-BY-SA-4.0": 10,
+    "GPL-2.0-only": 13,
+    "GPL-3.0-or-later": 58
+   },
+   "status": {
+    "conditions": 2699
+   },
+   "upstream": "https://content.luanti.org"
+  },
+  "blobmoji": {
+   "images": 2660,
+   "licenses": {
+    "Apache-2.0": 2660
+   },
+   "status": {
+    "verified": 2660
+   },
+   "upstream": "https://github.com/C1710/blobmoji"
+  },
+  "cdda_giantdays": {
+   "images": 2631,
+   "licenses": {
+    "CC-BY-SA-3.0": 2631
+   },
+   "status": {
+    "conditions": 2631
+   },
+   "upstream": "https://github.com/I-am-Erk/CDDA-Tilesets"
+  },
+  "emojis": {
+   "images": 2551,
+   "licenses": {
+    "CC-BY-4.0": 1255,
+    "Apache-2.0": 1296
+   },
+   "status": {
+    "conditions": 1255,
+    "verified": 1296
+   },
+   "upstream": ""
+  },
+  "cocomaterial": {
+   "images": 2423,
+   "licenses": {
+    "CC0-1.0": 2423
+   },
+   "status": {
+    "verified": 2423
+   },
+   "upstream": "https://cocomaterial.com"
+  },
+  "crossfire": {
+   "images": 2260,
+   "licenses": {
+    "GPL-2.0-or-later": 1988,
+    "CC-BY-3.0": 172,
+    "CC0-1.0": 39,
+    "CC-BY-SA-4.0": 44,
+    "CC-BY-SA-2.0": 5,
+    "CC-BY-SA-1.0": 2,
+    "PD": 4,
+    "CC-BY-2.0": 5,
+    "CC-BY-4.0": 1
+   },
+   "status": {
+    "conditions": 2217,
+    "verified": 43
+   },
+   "upstream": "https://sourceforge.net"
+  },
+  "openclipart_remainder": {
+   "images": 2084,
+   "licenses": {
+    "CC0-1.0": 2084
+   },
+   "status": {
+    "verified": 2084
+   },
+   "upstream": "https://openclipart.org"
+  },
+  "cdda_hollowmoon": {
+   "images": 2031,
+   "licenses": {
+    "CC-BY-SA-3.0": 2031
+   },
+   "status": {
+    "conditions": 2031
+   },
+   "upstream": "https://github.com/I-am-Erk/CDDA-Tilesets"
+  },
+  "serenity_pixel": {
+   "images": 1991,
+   "licenses": {
+    "BSD-2-Clause": 1991
+   },
+   "status": {
+    "verified": 1991
+   },
+   "upstream": "https://github.com/SerenityOS/serenity"
+  },
+  "stendhal": {
+   "images": 1911,
+   "licenses": {
+    "GPL-2.0-or-later": 140,
+    "CC0-1.0": 195,
+    "OGA-BY-3.0": 994,
+    "CC-BY-3.0": 234,
+    "CC-BY-SA-3.0": 300,
+    "GPL-3.0-only": 16,
+    "CC-BY-SA-3.0 OR CC-BY-SA-4.0": 2,
+    "CC-BY-3.0 OR CC-BY-4.0": 24,
+    "CC-BY-SA-4.0": 6
+   },
+   "status": {
+    "conditions": 1716,
+    "verified": 195
+   },
+   "upstream": "https://github.com/arianne/stendhal"
+  },
+  "bioicons": {
+   "images": 1846,
+   "licenses": {
+    "CC0-1.0": 277,
+    "CC-BY-4.0": 539,
+    "CC-BY-SA-4.0": 21,
+    "CC-BY-3.0": 980,
+    "MIT": 29
+   },
+   "status": {
+    "verified": 306,
+    "conditions": 1540
+   },
+   "upstream": "https://github.com/duerrsimon/bioicons"
+  },
+  "superpowers": {
+   "images": 1749,
+   "licenses": {
+    "CC0-1.0": 1749
+   },
+   "status": {
+    "verified": 1749
+   },
+   "upstream": "https://github.com/sparklinlabs/superpowers-asset-packs"
+  },
+  "phylopic": {
+   "images": 1740,
+   "licenses": {
+    "CC0-1.0": 1054,
+    "CC-BY-3.0": 175,
+    "CC-BY-4.0": 381,
+    "LicenseRef-PublicDomainMark-1.0": 130
+   },
+   "status": {
+    "verified": 1184,
+    "conditions": 556
+   },
+   "upstream": "https://www.phylopic.org"
+  },
+  "font-awesome-free": {
+   "images": 1667,
+   "licenses": {
+    "CC-BY-4.0": 1667
+   },
+   "status": {
+    "conditions": 1667
+   },
+   "upstream": "https://fontawesome.com"
+  },
+  "duelyst": {
+   "images": 1666,
+   "licenses": {
+    "CC0-1.0": 1666
+   },
+   "status": {
+    "verified": 1666
+   },
+   "upstream": "https://github.com/open-duelyst/duelyst"
+  },
+  "Icons-50": {
+   "images": 1611,
+   "licenses": {
+    "CC-BY-4.0": 1091,
+    "Apache-2.0": 520
+   },
+   "status": {
+    "conditions": 1091,
+    "verified": 520
+   },
+   "upstream": ""
+  },
+  "emojitwo": {
+   "images": 1599,
+   "licenses": {
+    "CC-BY-4.0": 1599
+   },
+   "status": {
+    "conditions": 1599
+   },
+   "upstream": "https://github.com/EmojiTwo/emojitwo"
+  },
+  "fluent_emoji_color": {
+   "images": 1569,
+   "licenses": {
+    "MIT": 1569
+   },
+   "status": {
+    "verified": 1569
+   },
+   "upstream": "https://github.com/microsoft/fluentui-emoji (commit 1ffb34c752ecf5d402f04cfb4b392c77f57c54bc)"
+  },
+  "fluent_emoji_flat": {
+   "images": 1538,
+   "licenses": {
+    "MIT": 1538
+   },
+   "status": {
+    "verified": 1538
+   },
+   "upstream": "https://github.com/microsoft/fluentui-emoji"
+  },
+  "fluent_emoji_3d": {
+   "images": 1532,
+   "licenses": {
+    "MIT": 1532
+   },
+   "status": {
+    "verified": 1532
+   },
+   "upstream": "https://github.com/microsoft/fluentui-emoji"
+  },
+  "google_cartoonset": {
+   "images": 1493,
+   "licenses": {
+    "CC-BY-4.0": 1493
+   },
+   "status": {
+    "conditions": 1493
+   },
+   "upstream": "https://google.github.io"
+  },
+  "luanti": {
+   "images": 1468,
+   "licenses": {
+    "MIT": 835,
+    "WTFPL": 35,
+    "CC0-1.0": 380,
+    "CC-BY-4.0": 157,
+    "CC-BY-3.0": 31,
+    "MIT AND CC-BY-3.0": 16,
+    "CC0-1.0 AND CC-BY-3.0": 8,
+    "0BSD": 2,
+    "Apache-2.0": 4
+   },
+   "status": {
+    "verified": 1256,
+    "conditions": 212
+   },
+   "upstream": "https://content.luanti.org"
+  },
+  "oga_gpl3": {
+   "images": 1366,
+   "licenses": {
+    "GPL-3.0-only": 1366
+   },
+   "status": {
+    "conditions": 1366
+   },
+   "upstream": "https://opengameart.org"
+  },
+  "opengfx": {
+   "images": 1364,
+   "licenses": {
+    "GPL-2.0-only": 1364
+   },
+   "status": {
+    "conditions": 1364
+   },
+   "upstream": "https://github.com/OpenTTD/OpenGFX"
+  },
+  "libreoffice_colibre": {
+   "images": 1277,
+   "licenses": {
+    "CC0-1.0": 1277
+   },
+   "status": {
+    "verified": 1277
+   },
+   "upstream": "https://github.com/LibreOffice/core"
+  },
+  "oxygen": {
+   "images": 1265,
+   "licenses": {
+    "LGPL-3.0-or-later": 1265
+   },
+   "status": {
+    "conditions": 1265
+   },
+   "upstream": "https://github.com/KDE/oxygen-icons"
+  },
+  "art4apps": {
+   "images": 1135,
+   "licenses": {
+    "CC-BY-SA (version not stated)": 1135
+   },
+   "status": {
+    "conditions": 1135
+   },
+   "upstream": "https://github.com/godiard/art4apps"
+  },
+  "tuxemon": {
+   "images": 1134,
+   "licenses": {
+    "CC-BY-SA-4.0": 1129,
+    "CC-BY-SA-3.0": 2,
+    "CC-BY-4.0": 3
+   },
+   "status": {
+    "conditions": 1134
+   },
+   "upstream": "https://github.com/Tuxemon/Tuxemon"
+  },
+  "threedicons": {
+   "images": 1036,
+   "licenses": {
+    "CC0-1.0": 1036
+   },
+   "status": {
+    "verified": 1036
+   },
+   "upstream": "https://github.com/realvjy/3dicons"
+  },
+  "nih_bioart": {
+   "images": 1002,
+   "licenses": {
+    "LicenseRef-PublicDomain": 1002
+   },
+   "status": {
+    "verified": 1002
+   },
+   "upstream": "https://bioart.niaid.nih.gov"
+  },
+  "shattered_pd": {
+   "images": 962,
+   "licenses": {
+    "GPL-3.0-or-later": 962
+   },
+   "status": {
+    "conditions": 962
+   },
+   "upstream": "https://github.com/00-Evan/shattered-pixel-dungeon"
+  },
+  "iconify_emojione-v1": {
+   "images": 949,
+   "licenses": {
+    "CC-BY-SA-4.0": 949
+   },
+   "status": {
+    "conditions": 949
+   },
+   "upstream": "https://github.com/joypixels/emojione-legacy"
+  },
+  "oga_gpl2": {
+   "images": 892,
+   "licenses": {
+    "GPL-2.0-only": 892
+   },
+   "status": {
+    "conditions": 892
+   },
+   "upstream": "https://opengameart.org"
+  },
+  "gcompris": {
+   "images": 885,
+   "licenses": {
+    "CC-BY-SA-4.0": 832,
+    "GPL-3.0-only": 10,
+    "Unlicense": 18,
+    "GPL-3.0-or-later": 25
+   },
+   "status": {
+    "conditions": 867,
+    "verified": 18
+   },
+   "upstream": "https://github.com/gcompris/GCompris-qt"
+  },
+  "cdda_brownlikebears": {
+   "images": 847,
+   "licenses": {
+    "CC-BY-SA-3.0": 847
+   },
+   "status": {
+    "conditions": 847
+   },
+   "upstream": "https://github.com/I-am-Erk/CDDA-Tilesets"
+  },
+  "gnome_2_10": {
+   "images": 834,
+   "licenses": {
+    "GPL-2.0-only": 834
+   },
+   "status": {
+    "conditions": 834
+   },
+   "upstream": "https://download.gnome.org"
+  },
+  "widelands": {
+   "images": 826,
+   "licenses": {
+    "GPL-2.0-or-later": 826
+   },
+   "status": {
+    "conditions": 826
+   },
+   "upstream": "https://github.com/widelands/widelands"
+  },
+  "glitch": {
+   "images": 825,
+   "licenses": {
+    "CC0-1.0": 825
+   },
+   "status": {
+    "verified": 825
+   },
+   "upstream": "https://github.com/tinyspeck/glitch-items"
+  },
+  "zeroad": {
+   "images": 746,
+   "licenses": {
+    "CC-BY-SA-3.0": 746
+   },
+   "status": {
+    "conditions": 746
+   },
+   "upstream": "https://github.com/0ad/0ad"
+  },
+  "wesnoth": {
+   "images": 738,
+   "licenses": {
+    "GPL-2.0-or-later": 738
+   },
+   "status": {
+    "conditions": 738
+   },
+   "upstream": "https://github.com/wesnoth/wesnoth"
+  },
+  "supertux": {
+   "images": 707,
+   "licenses": {
+    "GPL-3.0-or-later": 707
+   },
+   "status": {
+    "conditions": 707
+   },
+   "upstream": "https://github.com/SuperTux/supertux"
+  },
+  "wesnoth_frames": {
+   "images": 703,
+   "licenses": {
+    "GPL-2.0-or-later": 703
+   },
+   "status": {
+    "conditions": 703
+   },
+   "upstream": "https://github.com/wesnoth/wesnoth"
+  },
+  "haiku_icons": {
+   "images": 649,
+   "licenses": {
+    "MIT": 649
+   },
+   "status": {
+    "verified": 649
+   },
+   "upstream": "https://github.com/darealshinji/haiku-icons"
+  },
+  "numix": {
+   "images": 646,
+   "licenses": {
+    "GPL-3.0-or-later": 646
+   },
+   "status": {
+    "conditions": 646
+   },
+   "upstream": "https://github.com/numixproject/numix-icon-theme"
+  },
+  "tmw": {
+   "images": 646,
+   "licenses": {
+    "CC-BY-SA-3.0": 303,
+    "GPL-2.0-only": 294,
+    "CC-BY-SA-4.0": 47,
+    "CC0-1.0": 2
+   },
+   "status": {
+    "conditions": 644,
+    "verified": 2
+   },
+   "upstream": "https://github.com/themanaworld/tmwa-client-data"
+  },
+  "tuxpaint_stamps": {
+   "images": 625,
+   "licenses": {
+    "GPL-2.0-or-later": 625
+   },
+   "status": {
+    "conditions": 625
+   },
+   "upstream": "https://archive.ubuntu.com"
+  },
+  "libreoffice_elementary": {
+   "images": 615,
+   "licenses": {
+    "GPL-3.0": 615
+   },
+   "status": {
+    "conditions": 615
+   },
+   "upstream": "https://github.com/LibreOffice/core"
+  },
+  "silk": {
+   "images": 600,
+   "licenses": {
+    "CC-BY-2.5": 600
+   },
+   "status": {
+    "conditions": 600
+   },
+   "upstream": "http://www.famfamfam.com"
+  },
+  "breeze": {
+   "images": 596,
+   "licenses": {
+    "LGPL-3.0-or-later": 596
+   },
+   "status": {
+    "conditions": 596
+   },
+   "upstream": "https://github.com/KDE/breeze-icons"
+  },
+  "cryptoadz": {
+   "images": 590,
+   "licenses": {
+    "CC0-1.0": 590
+   },
+   "status": {
+    "verified": 590
+   },
+   "upstream": "https://github.com/wattsyart/cryptoadz-chained"
+  },
+  "aoo_gallery": {
+   "images": 585,
+   "licenses": {
+    "Apache-2.0": 585
+   },
+   "status": {
+    "verified": 585
+   },
+   "upstream": "https://github.com/apache/openoffice"
+  },
+  "libreoffice_karasa_jaga": {
+   "images": 583,
+   "licenses": {
+    "LGPL-3.0": 583
+   },
+   "status": {
+    "conditions": 583
+   },
+   "upstream": "https://github.com/LibreOffice/core"
+  },
+  "freeorion": {
+   "images": 557,
+   "licenses": {
+    "CC-BY-SA-3.0": 557
+   },
+   "status": {
+    "conditions": 557
+   },
+   "upstream": "https://github.com/freeorion/freeorion"
+  },
+  "kde_crystalclear": {
+   "images": 503,
+   "licenses": {
+    "LGPL-2.1-or-later": 503
+   },
+   "status": {
+    "conditions": 503
+   },
+   "upstream": "https://old-releases.ubuntu.com"
+  },
+  "moubootaur": {
+   "images": 503,
+   "licenses": {
+    "GPL-2.0-only": 248,
+    "CC-BY-SA-4.0": 67,
+    "CC-BY-SA-3.0": 151,
+    "MIT": 23,
+    "GPL-3.0-only": 7,
+    "CC0-1.0": 2,
+    "CC-BY-4.0": 3,
+    "CC-BY-3.0": 2
+   },
+   "status": {
+    "conditions": 478,
+    "verified": 25
+   },
+   "upstream": "https://git.themanaworld.org"
+  },
+  "oga_ogaby4": {
+   "images": 501,
+   "licenses": {
+    "OGA-BY-4.0": 501
+   },
+   "status": {
+    "conditions": 501
+   },
+   "upstream": "https://opengameart.org"
+  },
+  "libreoffice_breeze": {
+   "images": 488,
+   "licenses": {
+    "LGPL-3.0": 488
+   },
+   "status": {
+    "conditions": 488
+   },
+   "upstream": "https://github.com/LibreOffice/core"
+  },
+  "oil_commons_pd": {
+   "images": 457,
+   "licenses": {
+    "LicenseRef-PublicDomain": 457
+   },
+   "status": {
+    "verified": 457
+   },
+   "upstream": "https://downloads.sourceforge.net"
+  },
+  "makecode_arcade": {
+   "images": 448,
+   "licenses": {
+    "MIT": 448
+   },
+   "status": {
+    "verified": 448
+   },
+   "upstream": "https://github.com/microsoft/pxt-arcade"
+  },
+  "chess_pieces": {
+   "images": 442,
+   "licenses": {
+    "CC-BY-SA-4.0": 107,
+    "CC-BY-SA-3.0": 230,
+    "LicenseRef-PublicDomain": 15,
+    "CC0-1.0": 43,
+    "GFDL-1.2-or-later": 14,
+    "CC-BY-4.0": 9,
+    "LGPL (version per file page)": 24
+   },
+   "status": {
+    "conditions": 384,
+    "verified": 58
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "gartoon_redux": {
+   "images": 431,
+   "licenses": {
+    "GPL-2.0-or-later": 431
+   },
+   "status": {
+    "conditions": 431
+   },
+   "upstream": "https://archive.ubuntu.com"
+  },
+  "zafiro": {
+   "images": 430,
+   "licenses": {
+    "GPL-3.0-only": 430
+   },
+   "status": {
+    "conditions": 430
+   },
+   "upstream": "https://github.com/zayronxio/Zafiro-icons"
+  },
+  "kde_crystalproject": {
+   "images": 427,
+   "licenses": {
+    "LGPL-2.1-or-later": 427
+   },
+   "status": {
+    "conditions": 427
+   },
+   "upstream": "https://old-releases.ubuntu.com"
+  },
+  "wayfinding_pictograms": {
+   "images": 423,
+   "licenses": {
+    "CC-BY-SA-3.0": 100,
+    "CC-BY-SA-4.0": 32,
+    "CC-BY-3.0": 11,
+    "LicenseRef-PublicDomain": 218,
+    "CC0-1.0": 21,
+    "CC-BY-4.0": 2,
+    "CC-BY-SA-2.5": 4,
+    "CC-BY-2.0": 27,
+    "CC-BY-2.5": 8
+   },
+   "status": {
+    "conditions": 184,
+    "verified": 239
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "kdeclassic": {
+   "images": 421,
+   "licenses": {
+    "LicenseRef-kdeclassic-free-use": 421
+   },
+   "status": {
+    "conditions": 421
+   },
+   "upstream": "https://archive.ubuntu.com"
+  },
+  "freeciv": {
+   "images": 408,
+   "licenses": {
+    "GPL-2.0-or-later": 408
+   },
+   "status": {
+    "conditions": 408
+   },
+   "upstream": "https://github.com/freeciv/freeciv"
+  },
+  "tela": {
+   "images": 404,
+   "licenses": {
+    "GPL-3.0-only": 404
+   },
+   "status": {
+    "conditions": 404
+   },
+   "upstream": "https://github.com/vinceliuice/Tela-icon-theme"
+  },
+  "symbols_misc": {
+   "images": 397,
+   "licenses": {
+    "LicenseRef-PublicDomain": 55,
+    "CC-BY-SA-4.0": 285,
+    "CC-BY-4.0": 2,
+    "CC0-1.0": 22,
+    "CC-BY-SA-3.0": 30,
+    "CC-BY-3.0": 1,
+    "LicenseRef-Attribution": 1,
+    "OFL-1.1": 1
+   },
+   "status": {
+    "verified": 78,
+    "conditions": 319
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "qogir": {
+   "images": 392,
+   "licenses": {
+    "GPL-3.0-only": 392
+   },
+   "status": {
+    "conditions": 392
+   },
+   "upstream": "https://github.com/vinceliuice/Qogir-icon-theme"
+  },
+  "sports_pictograms": {
+   "images": 391,
+   "licenses": {
+    "LicenseRef-PublicDomain": 142,
+    "CC-BY-SA-4.0": 136,
+    "CC0-1.0": 35,
+    "CC-BY-SA-3.0": 60,
+    "CC-BY-2.0": 2,
+    "CC-BY-3.0": 9,
+    "LicenseRef-CopyrightedFreeUse": 4,
+    "CC-BY-4.0": 2,
+    "CC-BY-SA-2.5": 1
+   },
+   "status": {
+    "verified": 181,
+    "conditions": 210
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "volpeon": {
+   "images": 391,
+   "licenses": {
+    "Apache-2.0": 390,
+    "CC0-1.0": 1
+   },
+   "status": {
+    "verified": 391
+   },
+   "upstream": "https://volpeon.ink"
+  },
+  "duelyst_extra": {
+   "images": 381,
+   "licenses": {
+    "CC0-1.0": 381
+   },
+   "status": {
+    "verified": 381
+   },
+   "upstream": "https://github.com/open-duelyst/duelyst"
+  },
+  "silk_companion": {
+   "images": 370,
+   "licenses": {
+    "CC-BY-2.5": 370
+   },
+   "status": {
+    "conditions": 370
+   },
+   "upstream": "https://damieng.com"
+  },
+  "hazard_signs": {
+   "images": 364,
+   "licenses": {
+    "LicenseRef-PublicDomain": 285,
+    "CC-BY-SA-4.0": 16,
+    "CC-BY-SA-2.0": 2,
+    "CC0-1.0": 32,
+    "CC-BY-SA-3.0": 16,
+    "GPL (version per file page)": 4,
+    "LicenseRef-CopyrightedFreeUse": 3,
+    "CC-BY-SA-2.5": 1,
+    "CC-BY-3.0": 2,
+    "CC-BY-4.0": 3
+   },
+   "status": {
+    "verified": 320,
+    "conditions": 44
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "iso7010": {
+   "images": 364,
+   "licenses": {
+    "LicenseRef-PublicDomain": 146,
+    "CC-BY-4.0": 1,
+    "LicenseRef-OGL-v1-0": 1,
+    "CC-BY-SA-4.0": 14,
+    "CC0-1.0": 201,
+    "CC-BY-SA-3.0": 1
+   },
+   "status": {
+    "verified": 347,
+    "conditions": 17
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "elementary": {
+   "images": 360,
+   "licenses": {
+    "GPL-3.0-or-later": 360
+   },
+   "status": {
+    "conditions": 360
+   },
+   "upstream": "https://github.com/elementary/icons"
+  },
+  "evol": {
+   "images": 351,
+   "licenses": {
+    "GPL-2.0-only": 85,
+    "CC-BY-SA-3.0": 210,
+    "CC-BY-SA-4.0": 55,
+    "MIT": 1
+   },
+   "status": {
+    "conditions": 350,
+    "verified": 1
+   },
+   "upstream": "https://gitlab.com/evol/clientdata"
+  },
+  "scidraw": {
+   "images": 349,
+   "licenses": {
+    "CC0-1.0": 65,
+    "CC-BY-4.0": 284
+   },
+   "status": {
+    "verified": 65,
+    "conditions": 284
+   },
+   "upstream": "https://scidraw.io"
+  },
+  "sensa_emoji": {
+   "images": 344,
+   "licenses": {
+    "MIT": 344
+   },
+   "status": {
+    "verified": 344
+   },
+   "upstream": "https://github.com/sensadesign/sensaemoji"
+  },
+  "map_symbols": {
+   "images": 332,
+   "licenses": {
+    "CC-BY-SA-3.0": 48,
+    "LicenseRef-PublicDomain": 92,
+    "CC-BY-SA-4.0": 76,
+    "CC-BY-4.0": 6,
+    "GPL (version per file page)": 10,
+    "CC0-1.0": 60,
+    "CC-BY-2.5": 1,
+    "CC-BY-2.0": 29,
+    "CC-BY-3.0": 9,
+    "CC-BY-SA-2.5": 1
+   },
+   "status": {
+    "conditions": 180,
+    "verified": 152
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "svg_animals": {
+   "images": 332,
+   "licenses": {
+    "CC0-1.0": 44,
+    "CC-BY-4.0": 29,
+    "LicenseRef-PublicDomain": 67,
+    "CC-BY-SA-3.0": 127,
+    "CC-BY-SA-4.0": 33,
+    "CC-BY-SA-2.5": 4,
+    "CC-BY-3.0": 11,
+    "BSD (variant per file page)": 2,
+    "CC-BY-2.5": 5,
+    "LicenseRef-Attribution": 2,
+    "CC-BY-SA-2.0": 1,
+    "LGPL (version per file page)": 2,
+    "MIT": 1,
+    "GPL (version per file page)": 1,
+    "CC-BY-2.0": 1,
+    "LicenseRef-OGL-3": 2
+   },
+   "status": {
+    "verified": 114,
+    "conditions": 218
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "megaglest": {
+   "images": 319,
+   "licenses": {
+    "CC-BY-SA-3.0": 319
+   },
+   "status": {
+    "conditions": 319
+   },
+   "upstream": "https://github.com/MegaGlest/megaglest-data"
+  },
+  "ocha_humanitarian": {
+   "images": 317,
+   "licenses": {
+    "CC0-1.0": 317
+   },
+   "status": {
+    "verified": 317
+   },
+   "upstream": "https://github.com/UN-OCHA/humanitarian-icons"
+  },
+  "kora": {
+   "images": 316,
+   "licenses": {
+    "GPL-3.0-only": 316
+   },
+   "status": {
+    "conditions": 316
+   },
+   "upstream": "https://github.com/bikass/kora"
+  },
+  "svg_food_plants": {
+   "images": 316,
+   "licenses": {
+    "CC-BY-SA-3.0": 50,
+    "LicenseRef-PublicDomain": 62,
+    "CC0-1.0": 42,
+    "CC-BY-SA-4.0": 59,
+    "CC-BY-4.0": 89,
+    "CC-BY-3.0": 6,
+    "GPL (version per file page)": 1,
+    "CC-BY-SA-2.5": 2,
+    "CC-BY-2.5": 3,
+    "MIT": 1,
+    "BSD (variant per file page)": 1
+   },
+   "status": {
+    "conditions": 210,
+    "verified": 106
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "cdogs": {
+   "images": 315,
+   "licenses": {
+    "CC0-1.0": 174,
+    "CC-BY-3.0 AND CC-BY-SA-3.0": 4,
+    "CC-BY-3.0": 116,
+    "CC-BY-SA-3.0": 3,
+    "CC-BY-3.0 AND OGA-BY-3.0": 2,
+    "CC0-1.0 AND CC-BY-3.0 AND CC-BY-SA-3.0 AND GPL-3.0-only AND GPL-2.0-only": 12,
+    "OGA-BY-3.0": 2,
+    "CC0-1.0 AND CC-BY-3.0": 1,
+    "CC-BY-3.0 AND OGA-BY-3.0 AND GPL-3.0-only AND GPL-2.0-only": 1
+   },
+   "status": {
+    "verified": 174,
+    "conditions": 141
+   },
+   "upstream": "https://github.com/cxong/cdogs-sdl"
+  },
+  "nuvola": {
+   "images": 315,
+   "licenses": {
+    "LGPL-2.1-only": 315
+   },
+   "status": {
+    "conditions": 315
+   },
+   "upstream": "https://archive.ubuntu.com"
+  },
+  "elementary_xfce": {
+   "images": 308,
+   "licenses": {
+    "GPL-3.0-or-later": 308
+   },
+   "status": {
+    "conditions": 308
+   },
+   "upstream": "https://github.com/shimmerproject/elementary-xfce"
+  },
+  "libreoffice_sukapura": {
+   "images": 305,
+   "licenses": {
+    "MPL-2.0": 305
+   },
+   "status": {
+    "conditions": 305
+   },
+   "upstream": "https://github.com/LibreOffice/core"
+  },
+  "mindustry": {
+   "images": 297,
+   "licenses": {
+    "GPL-3.0-only": 297
+   },
+   "status": {
+    "conditions": 297
+   },
+   "upstream": "https://github.com/Anuken/Mindustry"
+  },
+  "freecol": {
+   "images": 292,
+   "licenses": {
+    "GPL-2.0-only": 292
+   },
+   "status": {
+    "conditions": 292
+   },
+   "upstream": "https://github.com/FreeCol/freecol"
+  },
+  "svg_vehicles": {
+   "images": 291,
+   "licenses": {
+    "LicenseRef-PublicDomain": 135,
+    "CC-BY-SA-3.0": 42,
+    "CC-BY-SA-4.0": 47,
+    "CC-BY-3.0": 6,
+    "CC0-1.0": 34,
+    "GPL (version per file page)": 11,
+    "CC-BY-4.0": 11,
+    "MIT": 3,
+    "CC-BY-2.5": 1,
+    "LicenseRef-CopyrightedFreeUse": 1
+   },
+   "status": {
+    "verified": 173,
+    "conditions": 118
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "freedoom": {
+   "images": 278,
+   "licenses": {
+    "BSD-3-Clause": 278
+   },
+   "status": {
+    "verified": 278
+   },
+   "upstream": "https://github.com/freedoom/freedoom"
+  },
+  "kde3_crystalsvg": {
+   "images": 270,
+   "licenses": {
+    "LGPL-2.1-only": 270
+   },
+   "status": {
+    "conditions": 270
+   },
+   "upstream": "https://old-releases.ubuntu.com"
+  },
+  "svg_objects": {
+   "images": 264,
+   "licenses": {
+    "LicenseRef-PublicDomain": 44,
+    "CC0-1.0": 63,
+    "CC-BY-SA-4.0": 55,
+    "CC-BY-SA-3.0": 68,
+    "LicenseRef-Attribution": 1,
+    "CC-BY-SA-2.5": 4,
+    "CC-BY-3.0": 3,
+    "CC-BY-4.0": 12,
+    "LGPL (version per file page)": 2,
+    "GPL (version per file page)": 6,
+    "MIT": 4,
+    "GFDL-1.2-or-later": 1,
+    "CC-BY-2.5": 1
+   },
+   "status": {
+    "verified": 111,
+    "conditions": 153
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "yaru": {
+   "images": 258,
+   "licenses": {
+    "CC-BY-SA-4.0": 258
+   },
+   "status": {
+    "conditions": 258
+   },
+   "upstream": "https://github.com/ubuntu/yaru"
+  },
+  "gruvbox_plus": {
+   "images": 257,
+   "licenses": {
+    "GPL-3.0-only": 257
+   },
+   "status": {
+    "conditions": 257
+   },
+   "upstream": "https://github.com/SylEleuth/gruvbox-plus-icon-pack"
+  },
+  "feather": {
+   "images": 254,
+   "licenses": {
+    "MIT": 254
+   },
+   "status": {
+    "verified": 254
+   },
+   "upstream": ""
+  },
+  "humanity": {
+   "images": 254,
+   "licenses": {
+    "GPL-2.0-only": 254
+   },
+   "status": {
+    "conditions": 254
+   },
+   "upstream": "https://archive.ubuntu.com"
+  },
+  "flare": {
+   "images": 252,
+   "licenses": {
+    "CC-BY-SA-3.0": 252
+   },
+   "status": {
+    "conditions": 252
+   },
+   "upstream": "https://github.com/flareteam/flare-game"
+  },
+  "gnome_3_12": {
+   "images": 251,
+   "licenses": {
+    "LGPL-3.0-only OR CC-BY-SA-3.0": 251
+   },
+   "status": {
+    "conditions": 251
+   },
+   "upstream": "https://download.gnome.org"
+  },
+  "kde_noia": {
+   "images": 247,
+   "licenses": {
+    "LGPL-2.1-only": 247
+   },
+   "status": {
+    "conditions": 247
+   },
+   "upstream": "https://old-releases.ubuntu.com"
+  },
+  "nuovo": {
+   "images": 246,
+   "licenses": {
+    "GPL-2.0-only": 246
+   },
+   "status": {
+    "conditions": 246
+   },
+   "upstream": "https://archive.ubuntu.com"
+  },
+  "colloid": {
+   "images": 236,
+   "licenses": {
+    "GPL-3.0-only": 236
+   },
+   "status": {
+    "conditions": 236
+   },
+   "upstream": "https://github.com/vinceliuice/Colloid-icon-theme"
+  },
+  "libreoffice_sifr": {
+   "images": 222,
+   "licenses": {
+    "CC-BY-SA-3.0": 222
+   },
+   "status": {
+    "conditions": 222
+   },
+   "upstream": "https://github.com/LibreOffice/core"
+  },
+  "obsidian": {
+   "images": 219,
+   "licenses": {
+    "GPL-3.0-only": 219
+   },
+   "status": {
+    "conditions": 219
+   },
+   "upstream": "https://github.com/madmaxms/iconpack-obsidian"
+  },
+  "nouns": {
+   "images": 217,
+   "licenses": {
+    "CC0-1.0": 217
+   },
+   "status": {
+    "verified": 217
+   },
+   "upstream": "https://github.com/nounsDAO/nouns-monorepo"
+  },
+  "gartoon": {
+   "images": 214,
+   "licenses": {
+    "GPL-2.0-or-later": 214
+   },
+   "status": {
+    "conditions": 214
+   },
+   "upstream": "https://archive.ubuntu.com"
+  },
+  "weather_symbols": {
+   "images": 213,
+   "licenses": {
+    "CC-BY-4.0": 4,
+    "CC-BY-SA-3.0": 56,
+    "LicenseRef-PublicDomain": 71,
+    "BSD (variant per file page)": 3,
+    "GPL (version per file page)": 5,
+    "CC0-1.0": 29,
+    "CC-BY-SA-4.0": 31,
+    "CC-BY-3.0": 4,
+    "LicenseRef-OGL-v1-0": 1,
+    "MIT": 2,
+    "CC-BY-SA-1.0": 1,
+    "LGPL (version per file page)": 1,
+    "FAL-1.3": 5
+   },
+   "status": {
+    "conditions": 108,
+    "verified": 105
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "tango": {
+   "images": 209,
+   "licenses": {
+    "LicenseRef-PublicDomain": 209
+   },
+   "status": {
+    "verified": 209
+   },
+   "upstream": "https://tango.freedesktop.org"
+  },
+  "kde_gorilla": {
+   "images": 201,
+   "licenses": {
+    "GPL-2.0-or-later": 201
+   },
+   "status": {
+    "conditions": 201
+   },
+   "upstream": "https://old-releases.ubuntu.com"
+  },
+  "mint_x": {
+   "images": 197,
+   "licenses": {
+    "GPL-3.0-or-later": 197
+   },
+   "status": {
+    "conditions": 197
+   },
+   "upstream": "https://github.com/linuxmint/mint-x-icons"
+  },
+  "diagona": {
+   "images": 192,
+   "licenses": {
+    "CC-BY-3.0": 192
+   },
+   "status": {
+    "conditions": 192
+   },
+   "upstream": "https://p.yusukekamiyamane.com"
+  },
+  "mutcd_signs": {
+   "images": 192,
+   "licenses": {
+    "CC0-1.0": 192
+   },
+   "status": {
+    "verified": 192
+   },
+   "upstream": "https://github.com/whizy76/mutcd-svg"
+  },
+  "nps_symbols": {
+   "images": 190,
+   "licenses": {
+    "BSD-3-Clause": 190
+   },
+   "status": {
+    "verified": 190
+   },
+   "upstream": "https://github.com/nationalparkservice/symbol-library"
+  },
+  "beautyline": {
+   "images": 189,
+   "licenses": {
+    "GPL-3.0-only": 189
+   },
+   "status": {
+    "conditions": 189
+   },
+   "upstream": "https://github.com/Tekh-ops/Garuda-Linux-Icons"
+  },
+  "paper": {
+   "images": 189,
+   "licenses": {
+    "CC-BY-SA-4.0": 189
+   },
+   "status": {
+    "conditions": 189
+   },
+   "upstream": "https://github.com/snwh/paper-icon-theme"
+  },
+  "yasis": {
+   "images": 183,
+   "licenses": {
+    "GPL-2.0-only": 183
+   },
+   "status": {
+    "conditions": 183
+   },
+   "upstream": "https://archive.ubuntu.com"
+  },
+  "phantom_open_emoji": {
+   "images": 182,
+   "licenses": {
+    "CC-BY-3.0": 182
+   },
+   "status": {
+    "conditions": 182
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "faba": {
+   "images": 181,
+   "licenses": {
+    "GPL-3.0-only OR CC-BY-SA-4.0": 181
+   },
+   "status": {
+    "conditions": 181
+   },
+   "upstream": "https://github.com/snwh/faba-icon-theme"
+  },
+  "vimix": {
+   "images": 181,
+   "licenses": {
+    "CC-BY-SA-4.0": 181
+   },
+   "status": {
+    "conditions": 181
+   },
+   "upstream": "https://github.com/vinceliuice/vimix-icon-theme"
+  },
+  "gnome_2_18": {
+   "images": 180,
+   "licenses": {
+    "GPL-2.0-only": 180
+   },
+   "status": {
+    "conditions": 180
+   },
+   "upstream": "https://download.gnome.org"
+  },
+  "scratch14": {
+   "images": 175,
+   "licenses": {
+    "CC-BY-SA-3.0": 175
+   },
+   "status": {
+    "conditions": 175
+   },
+   "upstream": "https://archive.ubuntu.com"
+  },
+  "pop": {
+   "images": 170,
+   "licenses": {
+    "CC-BY-SA-4.0": 170
+   },
+   "status": {
+    "conditions": 170
+   },
+   "upstream": "https://github.com/pop-os/icon-theme"
+  },
+  "kde_crystal": {
+   "images": 166,
+   "licenses": {
+    "GPL-2.0-or-later": 166
+   },
+   "status": {
+    "conditions": 166
+   },
+   "upstream": "https://old-releases.ubuntu.com"
+  },
+  "aiga_dot": {
+   "images": 160,
+   "licenses": {
+    "LicenseRef-PublicDomain": 148,
+    "CC-BY-SA-3.0": 3,
+    "CC0-1.0": 6,
+    "CC-BY-SA-4.0": 1,
+    "LicenseRef-CopyrightedFreeUse": 1,
+    "CC-BY-2.5": 1
+   },
+   "status": {
+    "verified": 155,
+    "conditions": 5
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "breathe": {
+   "images": 160,
+   "licenses": {
+    "CC-BY-SA-3.0": 160
+   },
+   "status": {
+    "conditions": 160
+   },
+   "upstream": "https://archive.ubuntu.com"
+  },
+  "deepin": {
+   "images": 159,
+   "licenses": {
+    "GPL-3.0-or-later": 159
+   },
+   "status": {
+    "conditions": 159
+   },
+   "upstream": "https://github.com/linuxdeepin/deepin-icon-theme"
+  },
+  "drawio_clipart": {
+   "images": 153,
+   "licenses": {
+    "Apache-2.0": 153
+   },
+   "status": {
+    "verified": 153
+   },
+   "upstream": "https://github.com/jgraph/drawio"
+  },
+  "minetest_game": {
+   "images": 153,
+   "licenses": {
+    "CC-BY-SA-3.0": 153
+   },
+   "status": {
+    "conditions": 153
+   },
+   "upstream": "https://github.com/luanti-org/minetest_game"
+  },
+  "candy": {
+   "images": 149,
+   "licenses": {
+    "GPL-3.0-only": 149
+   },
+   "status": {
+    "conditions": 149
+   },
+   "upstream": "https://github.com/EliverLara/candy-icons"
+  },
+  "fluent_theme": {
+   "images": 148,
+   "licenses": {
+    "GPL-3.0-only": 148
+   },
+   "status": {
+    "conditions": 148
+   },
+   "upstream": "https://github.com/vinceliuice/Fluent-icon-theme"
+  },
+  "suru_plus": {
+   "images": 146,
+   "licenses": {
+    "GPL-3.0-only": 146
+   },
+   "status": {
+    "conditions": 146
+   },
+   "upstream": "https://github.com/gusbemacbe/suru-plus"
+  },
+  "human": {
+   "images": 145,
+   "licenses": {
+    "CC-BY-SA-2.5": 145
+   },
+   "status": {
+    "conditions": 145
+   },
+   "upstream": "https://archive.ubuntu.com"
+  },
+  "oil_oxygen": {
+   "images": 137,
+   "licenses": {
+    "CC-BY-SA-3.0 OR LGPL-3.0-or-later": 137
+   },
+   "status": {
+    "conditions": 137
+   },
+   "upstream": "https://downloads.sourceforge.net"
+  },
+  "thin_animal": {
+   "images": 137,
+   "licenses": {
+    "CC-BY-SA-4.0": 46,
+    "LicenseRef-PublicDomain": 18,
+    "CC-BY-SA-3.0": 32,
+    "CC0-1.0": 22,
+    "CC-BY-3.0": 5,
+    "CC-BY-4.0": 11,
+    "CC-BY-SA-2.5": 3
+   },
+   "status": {
+    "conditions": 97,
+    "verified": 40
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "moka": {
+   "images": 135,
+   "licenses": {
+    "GPL-3.0-only OR CC-BY-SA-4.0": 135
+   },
+   "status": {
+    "conditions": 135
+   },
+   "upstream": "https://github.com/snwh/moka-icon-theme"
+  },
+  "gnome_colors": {
+   "images": 134,
+   "licenses": {
+    "GPL-2.0-only": 134
+   },
+   "status": {
+    "conditions": 134
+   },
+   "upstream": "https://archive.ubuntu.com"
+  },
+  "oil_wpclipart": {
+   "images": 131,
+   "licenses": {
+    "LicenseRef-PublicDomain": 131
+   },
+   "status": {
+    "verified": 131
+   },
+   "upstream": "https://downloads.sourceforge.net"
+  },
+  "cosmic_icons": {
+   "images": 129,
+   "licenses": {
+    "CC-BY-SA-4.0": 129
+   },
+   "status": {
+    "conditions": 129
+   },
+   "upstream": "https://github.com/pop-os/cosmic-icons"
+  },
+  "kde_nuovext": {
+   "images": 129,
+   "licenses": {
+    "GPL-2.0-only": 129
+   },
+   "status": {
+    "conditions": 129
+   },
+   "upstream": "https://old-releases.ubuntu.com"
+  },
+  "dlg_neu": {
+   "images": 126,
+   "licenses": {
+    "GPL-2.0-only": 126
+   },
+   "status": {
+    "conditions": 126
+   },
+   "upstream": "https://old-releases.ubuntu.com"
+  },
+  "childsplay": {
+   "images": 125,
+   "licenses": {
+    "GPL-3.0-only": 125
+   },
+   "status": {
+    "conditions": 125
+   },
+   "upstream": "https://archive.ubuntu.com"
+  },
+  "faenza": {
+   "images": 112,
+   "licenses": {
+    "GPL-3.0-or-later": 112
+   },
+   "status": {
+    "conditions": 112
+   },
+   "upstream": "https://archive.ubuntu.com"
+  },
+  "kde_kneu": {
+   "images": 109,
+   "licenses": {
+    "GPL-2.0-only": 109
+   },
+   "status": {
+    "conditions": 109
+   },
+   "upstream": "https://old-releases.ubuntu.com"
+  },
+  "oil_nuvola": {
+   "images": 104,
+   "licenses": {
+    "LGPL-2.1-only": 104
+   },
+   "status": {
+    "conditions": 104
+   },
+   "upstream": "https://downloads.sourceforge.net"
+  },
+  "cards_tiles_dice": {
+   "images": 103,
+   "licenses": {
+    "CC-BY-SA-3.0": 19,
+    "CC-BY-SA-4.0": 51,
+    "CC0-1.0": 15,
+    "CC-BY-4.0": 4,
+    "GPL (version per file page)": 2,
+    "LicenseRef-PublicDomain": 7,
+    "CC-BY-3.0": 3,
+    "LGPL (version per file page)": 2
+   },
+   "status": {
+    "conditions": 81,
+    "verified": 22
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "oil_gnome": {
+   "images": 99,
+   "licenses": {
+    "GPL-2.0-only": 99
+   },
+   "status": {
+    "conditions": 99
+   },
+   "upstream": "https://downloads.sourceforge.net"
+  },
+  "neu": {
+   "images": 98,
+   "licenses": {
+    "GPL-2.0-only": 98
+   },
+   "status": {
+    "conditions": 98
+   },
+   "upstream": "https://archive.ubuntu.com"
+  },
+  "luv": {
+   "images": 96,
+   "licenses": {
+    "CC-BY-SA-4.0": 96
+   },
+   "status": {
+    "conditions": 96
+   },
+   "upstream": "https://github.com/Nitrux/luv-icon-theme"
+  },
+  "iconify_flat-ui": {
+   "images": 88,
+   "licenses": {
+    "CC-BY-3.0 AND MIT": 88
+   },
+   "status": {
+    "conditions": 88
+   },
+   "upstream": "https://github.com/designmodo/Flat-UI"
+  },
+  "mate": {
+   "images": 85,
+   "licenses": {
+    "LGPL-3.0-only OR CC-BY-SA-3.0": 85
+   },
+   "status": {
+    "conditions": 85
+   },
+   "upstream": "https://github.com/mate-desktop/mate-icon-theme"
+  },
+  "blankon": {
+   "images": 83,
+   "licenses": {
+    "GPL-1.0-or-later": 83
+   },
+   "status": {
+    "conditions": 83
+   },
+   "upstream": "https://old-releases.ubuntu.com"
+  },
+  "metno_weathericons": {
+   "images": 83,
+   "licenses": {
+    "MIT": 83
+   },
+   "status": {
+    "verified": 83
+   },
+   "upstream": "https://github.com/metno/weathericons"
+  },
+  "mint_y": {
+   "images": 82,
+   "licenses": {
+    "GPL-3.0-or-later AND CC-BY-SA-4.0": 82
+   },
+   "status": {
+    "conditions": 82
+   },
+   "upstream": "https://github.com/linuxmint/mint-y-icons"
+  },
+  "mate_faenza": {
+   "images": 79,
+   "licenses": {
+    "GPL-3.0-only": 79
+   },
+   "status": {
+    "conditions": 79
+   },
+   "upstream": "https://github.com/mate-desktop/mate-icon-theme-faenza"
+  },
+  "moblin": {
+   "images": 77,
+   "licenses": {
+    "CC-BY-SA-3.0-US": 77
+   },
+   "status": {
+    "conditions": 77
+   },
+   "upstream": "https://archive.ubuntu.com"
+  },
+  "thin_object": {
+   "images": 74,
+   "licenses": {
+    "CC-BY-SA-3.0": 9,
+    "CC0-1.0": 17,
+    "CC-BY-SA-2.5": 2,
+    "CC-BY-SA-4.0": 13,
+    "CC-BY-3.0": 9,
+    "CC-BY-4.0": 9,
+    "LicenseRef-PublicDomain": 12,
+    "MIT": 2,
+    "GPL (version per file page)": 1
+   },
+   "status": {
+    "conditions": 43,
+    "verified": 31
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "oil_echo": {
+   "images": 69,
+   "licenses": {
+    "CC-BY-SA-3.0": 69
+   },
+   "status": {
+    "conditions": 69
+   },
+   "upstream": "https://downloads.sourceforge.net"
+  },
+  "oil_intrigue": {
+   "images": 63,
+   "licenses": {
+    "GPL-2.0-only": 63
+   },
+   "status": {
+    "conditions": 63
+   },
+   "upstream": "https://downloads.sourceforge.net"
+  },
+  "lxde_nuovext": {
+   "images": 58,
+   "licenses": {
+    "LGPL-3.0-only": 58
+   },
+   "status": {
+    "conditions": 58
+   },
+   "upstream": "https://archive.ubuntu.com"
+  },
+  "adwaita_legacy": {
+   "images": 56,
+   "licenses": {
+    "LGPL-3.0-only OR CC-BY-SA-3.0": 56
+   },
+   "status": {
+    "conditions": 56
+   },
+   "upstream": "https://gitlab.gnome.org"
+  },
+  "suru": {
+   "images": 54,
+   "licenses": {
+    "GPL-3.0-only OR CC-BY-SA-4.0": 54
+   },
+   "status": {
+    "conditions": 54
+   },
+   "upstream": "https://github.com/snwh/suru-icon-theme"
+  },
+  "emelfm2_svg": {
+   "images": 52,
+   "licenses": {
+    "CC-BY-SA-3.0": 52
+   },
+   "status": {
+    "conditions": 52
+   },
+   "upstream": "https://archive.ubuntu.com"
+  },
+  "oil_crystal_clear": {
+   "images": 49,
+   "licenses": {
+    "LGPL-2.1-only": 49
+   },
+   "status": {
+    "conditions": 49
+   },
+   "upstream": "https://downloads.sourceforge.net"
+  },
+  "thin_plant": {
+   "images": 47,
+   "licenses": {
+    "CC-BY-SA-3.0": 12,
+    "CC-BY-4.0": 2,
+    "CC0-1.0": 7,
+    "CC-BY-SA-4.0": 15,
+    "CC-BY-SA-2.5": 3,
+    "LicenseRef-PublicDomain": 8
+   },
+   "status": {
+    "conditions": 32,
+    "verified": 15
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_colombia": {
+   "images": 39,
+   "licenses": {
+    "LicenseRef-PublicDomain": 39
+   },
+   "status": {
+    "verified": 39
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_greece": {
+   "images": 39,
+   "licenses": {
+    "LicenseRef-PublicDomain": 5,
+    "CC0-1.0": 1,
+    "CC-BY-SA-4.0": 32,
+    "CC-BY-SA-3.0": 1
+   },
+   "status": {
+    "verified": 6,
+    "conditions": 33
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_mexico": {
+   "images": 39,
+   "licenses": {
+    "CC-BY-SA-3.0": 4,
+    "LicenseRef-PublicDomain": 35
+   },
+   "status": {
+    "conditions": 4,
+    "verified": 35
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "oil_tango_harm": {
+   "images": 38,
+   "licenses": {
+    "CC-BY-3.0": 38
+   },
+   "status": {
+    "conditions": 38
+   },
+   "upstream": "https://downloads.sourceforge.net"
+  },
+  "roadsigns_austria": {
+   "images": 38,
+   "licenses": {
+    "LicenseRef-PublicDomain": 38
+   },
+   "status": {
+    "verified": 38
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_brazil": {
+   "images": 38,
+   "licenses": {
+    "LicenseRef-PublicDomain": 19,
+    "CC-BY-SA-3.0": 19
+   },
+   "status": {
+    "verified": 19,
+    "conditions": 19
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_hungary": {
+   "images": 38,
+   "licenses": {
+    "LicenseRef-PublicDomain": 38
+   },
+   "status": {
+    "verified": 38
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_southern_african_development_community": {
+   "images": 38,
+   "licenses": {
+    "LicenseRef-PublicDomain": 38
+   },
+   "status": {
+    "verified": 38
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "tangerine": {
+   "images": 38,
+   "licenses": {
+    "CC-BY-SA-2.5": 38
+   },
+   "status": {
+    "conditions": 38
+   },
+   "upstream": "https://archive.ubuntu.com"
+  },
+  "roadsigns_canada": {
+   "images": 37,
+   "licenses": {
+    "LicenseRef-PublicDomain": 37
+   },
+   "status": {
+    "verified": 37
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_chile": {
+   "images": 37,
+   "licenses": {
+    "LicenseRef-PublicDomain": 37
+   },
+   "status": {
+    "verified": 37
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_russia": {
+   "images": 37,
+   "licenses": {
+    "CC-BY-SA-4.0": 3,
+    "CC-BY-SA-3.0": 10,
+    "LicenseRef-PublicDomain": 23,
+    "CC0-1.0": 1
+   },
+   "status": {
+    "conditions": 13,
+    "verified": 24
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_ukraine": {
+   "images": 37,
+   "licenses": {
+    "LicenseRef-PublicDomain": 36,
+    "CC-BY-SA-4.0": 1
+   },
+   "status": {
+    "verified": 36,
+    "conditions": 1
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_iceland": {
+   "images": 36,
+   "licenses": {
+    "LicenseRef-PublicDomain": 36
+   },
+   "status": {
+    "verified": 36
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_indonesia": {
+   "images": 36,
+   "licenses": {
+    "CC0-1.0": 3,
+    "LicenseRef-PublicDomain": 17,
+    "CC-BY-SA-4.0": 16
+   },
+   "status": {
+    "verified": 20,
+    "conditions": 16
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_vienna": {
+   "images": 36,
+   "licenses": {
+    "LicenseRef-PublicDomain": 36
+   },
+   "status": {
+    "verified": 36
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "ubuntu_touch_suru": {
+   "images": 36,
+   "licenses": {
+    "CC-BY-SA-3.0": 36
+   },
+   "status": {
+    "conditions": 36
+   },
+   "upstream": "https://gitlab.com/ubports/development"
+  },
+  "gnome_2_31": {
+   "images": 35,
+   "licenses": {
+    "LGPL-3.0-only OR CC-BY-SA-3.0": 35
+   },
+   "status": {
+    "conditions": 35
+   },
+   "upstream": "https://download.gnome.org"
+  },
+  "roadsigns_malaysia": {
+   "images": 35,
+   "licenses": {
+    "LicenseRef-PublicDomain": 6,
+    "CC-BY-SA-4.0": 19,
+    "CC0-1.0": 10
+   },
+   "status": {
+    "verified": 16,
+    "conditions": 19
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_spain": {
+   "images": 35,
+   "licenses": {
+    "CC-BY-SA-4.0": 5,
+    "LicenseRef-PublicDomain": 17,
+    "CC0-1.0": 12,
+    "CC-BY-4.0": 1
+   },
+   "status": {
+    "conditions": 6,
+    "verified": 29
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_switzerland": {
+   "images": 35,
+   "licenses": {
+    "LicenseRef-PublicDomain": 35
+   },
+   "status": {
+    "verified": 35
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "thin_food": {
+   "images": 35,
+   "licenses": {
+    "CC0-1.0": 7,
+    "CC-BY-4.0": 7,
+    "CC-BY-SA-3.0": 8,
+    "LicenseRef-PublicDomain": 4,
+    "CC-BY-SA-4.0": 5,
+    "MIT": 1,
+    "GPL (version per file page)": 1,
+    "CC-BY-3.0": 1,
+    "CC-BY-1.0": 1
+   },
+   "status": {
+    "verified": 12,
+    "conditions": 23
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_vietnam": {
+   "images": 34,
+   "licenses": {
+    "CC-BY-4.0": 3,
+    "CC-BY-SA-4.0": 22,
+    "CC0-1.0": 5,
+    "LicenseRef-PublicDomain": 4
+   },
+   "status": {
+    "conditions": 25,
+    "verified": 9
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "suede": {
+   "images": 34,
+   "licenses": {
+    "GPL-1.0-or-later": 34
+   },
+   "status": {
+    "conditions": 34
+   },
+   "upstream": "https://old-releases.ubuntu.com"
+  },
+  "roadsigns_france": {
+   "images": 33,
+   "licenses": {
+    "CC-BY-SA-4.0": 13,
+    "LicenseRef-PublicDomain": 16,
+    "CC0-1.0": 3,
+    "CC-BY-SA-3.0": 1
+   },
+   "status": {
+    "conditions": 14,
+    "verified": 19
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_india": {
+   "images": 33,
+   "licenses": {
+    "LicenseRef-PublicDomain": 23,
+    "LicenseRef-GODL-India": 10
+   },
+   "status": {
+    "verified": 23,
+    "conditions": 10
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "thin_place": {
+   "images": 33,
+   "licenses": {
+    "CC0-1.0": 6,
+    "LicenseRef-PublicDomain": 7,
+    "CC-BY-SA-4.0": 7,
+    "CC-BY-4.0": 2,
+    "MIT": 1,
+    "CC-BY-SA-3.0": 3,
+    "GPL (version per file page)": 7
+   },
+   "status": {
+    "verified": 14,
+    "conditions": 19
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_latvia": {
+   "images": 32,
+   "licenses": {
+    "CC-BY-SA-4.0": 14,
+    "LicenseRef-PublicDomain": 16,
+    "CC-BY-SA-3.0": 2
+   },
+   "status": {
+    "conditions": 16,
+    "verified": 16
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_philippines": {
+   "images": 32,
+   "licenses": {
+    "LicenseRef-PublicDomain": 32
+   },
+   "status": {
+    "verified": 32
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_south_korea": {
+   "images": 32,
+   "licenses": {
+    "LicenseRef-PublicDomain": 30,
+    "CC0-1.0": 2
+   },
+   "status": {
+    "verified": 32
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_denmark": {
+   "images": 31,
+   "licenses": {
+    "LicenseRef-PublicDomain": 31
+   },
+   "status": {
+    "verified": 31
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_norway": {
+   "images": 31,
+   "licenses": {
+    "LicenseRef-PublicDomain": 31
+   },
+   "status": {
+    "verified": 31
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_taiwan": {
+   "images": 31,
+   "licenses": {
+    "LicenseRef-PublicDomain": 30,
+    "CC0-1.0": 1
+   },
+   "status": {
+    "verified": 31
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_thailand": {
+   "images": 31,
+   "licenses": {
+    "LicenseRef-PublicDomain": 28,
+    "CC0-1.0": 1,
+    "CC-BY-SA-4.0": 2
+   },
+   "status": {
+    "verified": 29,
+    "conditions": 2
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "oil_openclipart": {
+   "images": 30,
+   "licenses": {
+    "CC0-1.0": 30
+   },
+   "status": {
+    "verified": 30
+   },
+   "upstream": "https://downloads.sourceforge.net"
+  },
+  "roadsigns_belgium": {
+   "images": 30,
+   "licenses": {
+    "LicenseRef-PublicDomain": 28,
+    "CC-BY-SA-3.0": 1,
+    "CC0-1.0": 1
+   },
+   "status": {
+    "verified": 29,
+    "conditions": 1
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_germany": {
+   "images": 30,
+   "licenses": {
+    "LicenseRef-PublicDomain": 30
+   },
+   "status": {
+    "verified": 30
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_netherlands": {
+   "images": 30,
+   "licenses": {
+    "LicenseRef-PublicDomain": 30
+   },
+   "status": {
+    "verified": 30
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_turkey": {
+   "images": 30,
+   "licenses": {
+    "CC-BY-SA-4.0": 30
+   },
+   "status": {
+    "conditions": 30
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "gion": {
+   "images": 29,
+   "licenses": {
+    "GPL-2.0-only": 29
+   },
+   "status": {
+    "conditions": 29
+   },
+   "upstream": "https://archive.ubuntu.com"
+  },
+  "roadsigns_israel": {
+   "images": 28,
+   "licenses": {
+    "CC-BY-SA-3.0": 10,
+    "LicenseRef-PublicDomain": 12,
+    "CC-BY-SA-4.0": 6
+   },
+   "status": {
+    "conditions": 16,
+    "verified": 12
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "mate_menta": {
+   "images": 27,
+   "licenses": {
+    "LGPL-3.0-only OR CC-BY-SA-3.0": 27
+   },
+   "status": {
+    "conditions": 27
+   },
+   "upstream": "https://github.com/mate-desktop/mate-icon-theme"
+  },
+  "roadsigns_ireland": {
+   "images": 27,
+   "licenses": {
+    "LicenseRef-PublicDomain": 24,
+    "CC-BY-SA-3.0": 2,
+    "CC0-1.0": 1
+   },
+   "status": {
+    "verified": 25,
+    "conditions": 2
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_sweden": {
+   "images": 27,
+   "licenses": {
+    "LicenseRef-PublicDomain": 26,
+    "CC-BY-SA-4.0": 1
+   },
+   "status": {
+    "verified": 26,
+    "conditions": 1
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_czech_republic": {
+   "images": 26,
+   "licenses": {
+    "CC-BY-SA-3.0": 11,
+    "LicenseRef-PublicDomain": 7,
+    "CC-BY-4.0": 8
+   },
+   "status": {
+    "conditions": 19,
+    "verified": 7
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_poland": {
+   "images": 26,
+   "licenses": {
+    "LicenseRef-PublicDomain": 25,
+    "CC0-1.0": 1
+   },
+   "status": {
+    "verified": 26
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "oil_crystal": {
+   "images": 25,
+   "licenses": {
+    "LGPL-2.1-only": 25
+   },
+   "status": {
+    "conditions": 25
+   },
+   "upstream": "https://downloads.sourceforge.net"
+  },
+  "thin_vehicle": {
+   "images": 25,
+   "licenses": {
+    "CC-BY-SA-4.0": 6,
+    "CC0-1.0": 5,
+    "CC-BY-4.0": 1,
+    "GPL (version per file page)": 8,
+    "CC-BY-3.0": 1,
+    "CC-BY-SA-3.0": 2,
+    "LicenseRef-PublicDomain": 1,
+    "MIT": 1
+   },
+   "status": {
+    "conditions": 18,
+    "verified": 7
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "adwaita": {
+   "images": 24,
+   "licenses": {
+    "LGPL-3.0-only OR CC-BY-SA-3.0": 24
+   },
+   "status": {
+    "conditions": 24
+   },
+   "upstream": "https://gitlab.gnome.org"
+  },
+  "roadsigns_cambodia": {
+   "images": 23,
+   "licenses": {
+    "CC-BY-SA-4.0": 13,
+    "LicenseRef-PublicDomain": 10
+   },
+   "status": {
+    "conditions": 13,
+    "verified": 10
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "thin_creature": {
+   "images": 20,
+   "licenses": {
+    "CC-BY-2.5": 4,
+    "CC-BY-SA-3.0": 9,
+    "CC-BY-SA-4.0": 3,
+    "CC-BY-SA-2.5": 1,
+    "CC-BY-4.0": 1,
+    "CC0-1.0": 1,
+    "CC-BY-3.0": 1
+   },
+   "status": {
+    "conditions": 19,
+    "verified": 1
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "arc_icons": {
+   "images": 19,
+   "licenses": {
+    "GPL-3.0-only": 19
+   },
+   "status": {
+    "conditions": 19
+   },
+   "upstream": "https://github.com/horst3180/arc-icon-theme"
+  },
+  "roadsigns_iran": {
+   "images": 19,
+   "licenses": {
+    "LicenseRef-PublicDomain": 8,
+    "CC0-1.0": 11
+   },
+   "status": {
+    "verified": 19
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "boston": {
+   "images": 18,
+   "licenses": {
+    "CC-BY-SA-4.0": 18
+   },
+   "status": {
+    "conditions": 18
+   },
+   "upstream": "https://github.com/heychrisd/Boston-Icons"
+  },
+  "foxtrot": {
+   "images": 18,
+   "licenses": {
+    "CC-BY-SA-2.5": 18
+   },
+   "status": {
+    "conditions": 18
+   },
+   "upstream": "https://archive.ubuntu.com"
+  },
+  "nuvola_1_0": {
+   "images": 18,
+   "licenses": {
+    "LGPL-2.1-only": 18
+   },
+   "status": {
+    "conditions": 18
+   },
+   "upstream": "https://old-releases.ubuntu.com"
+  },
+  "roadsigns_argentina": {
+   "images": 17,
+   "licenses": {
+    "LicenseRef-PublicDomain": 17
+   },
+   "status": {
+    "verified": 17
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_finland": {
+   "images": 16,
+   "licenses": {
+    "LicenseRef-PublicDomain": 16
+   },
+   "status": {
+    "verified": 16
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_japan": {
+   "images": 16,
+   "licenses": {
+    "LicenseRef-PublicDomain": 16
+   },
+   "status": {
+    "verified": 16
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_soviet_union": {
+   "images": 16,
+   "licenses": {
+    "CC0-1.0": 2,
+    "LicenseRef-PublicDomain": 14
+   },
+   "status": {
+    "verified": 16
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "thin_profession": {
+   "images": 16,
+   "licenses": {
+    "LicenseRef-PublicDomain": 2,
+    "CC-BY-SA-2.5": 1,
+    "CC-BY-SA-3.0": 6,
+    "CC0-1.0": 4,
+    "CC-BY-4.0": 1,
+    "GPL (version per file page)": 2
+   },
+   "status": {
+    "verified": 6,
+    "conditions": 10
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "oil_tango": {
+   "images": 15,
+   "licenses": {
+    "LicenseRef-PublicDomain": 15
+   },
+   "status": {
+    "verified": 15
+   },
+   "upstream": "https://downloads.sourceforge.net"
+  },
+  "roadsigns_italy": {
+   "images": 15,
+   "licenses": {
+    "LicenseRef-PublicDomain": 13,
+    "CC-BY-SA-4.0": 1,
+    "CC-BY-SA-3.0": 1
+   },
+   "status": {
+    "verified": 13,
+    "conditions": 2
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_slovakia": {
+   "images": 15,
+   "licenses": {
+    "LicenseRef-PublicDomain": 13,
+    "CC-BY-SA-4.0": 2
+   },
+   "status": {
+    "verified": 13,
+    "conditions": 2
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "flat_remix": {
+   "images": 13,
+   "licenses": {
+    "GPL-3.0-only": 13
+   },
+   "status": {
+    "conditions": 13
+   },
+   "upstream": "https://github.com/daniruiz/flat-remix"
+  },
+  "roadsigns_united_kingdom": {
+   "images": 13,
+   "licenses": {
+    "LicenseRef-OGL-v1-0": 13
+   },
+   "status": {
+    "conditions": 13
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "gnome_alternative": {
+   "images": 12,
+   "licenses": {
+    "GPL-2.0-only": 12
+   },
+   "status": {
+    "conditions": 12
+   },
+   "upstream": "https://archive.ubuntu.com"
+  },
+  "roadsigns_australia": {
+   "images": 11,
+   "licenses": {
+    "CC0-1.0": 1,
+    "LicenseRef-PublicDomain": 8,
+    "GFDL-1.2-or-later": 2
+   },
+   "status": {
+    "verified": 9,
+    "conditions": 2
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "cdda_mushroom_dream": {
+   "images": 9,
+   "licenses": {
+    "CC-BY-SA-4.0": 9
+   },
+   "status": {
+    "conditions": 9
+   },
+   "upstream": "https://github.com/I-am-Erk/CDDA-Tilesets"
+  },
+  "gnome_extras": {
+   "images": 8,
+   "licenses": {
+    "CC-BY-SA-3.0": 8
+   },
+   "status": {
+    "conditions": 8
+   },
+   "upstream": "https://gitlab.gnome.org"
+  },
+  "roadsigns_singapore": {
+   "images": 7,
+   "licenses": {
+    "LicenseRef-PublicDomain": 4,
+    "CC-BY-SA-3.0": 1,
+    "CC-BY-3.0": 2
+   },
+   "status": {
+    "verified": 4,
+    "conditions": 3
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "roadsigns_new_zealand": {
+   "images": 5,
+   "licenses": {
+    "LicenseRef-PublicDomain": 5
+   },
+   "status": {
+    "verified": 5
+   },
+   "upstream": "https://commons.wikimedia.org"
+  },
+  "oil_nuovext2": {
+   "images": 4,
+   "licenses": {
+    "LGPL-3.0-only": 4
+   },
+   "status": {
+    "conditions": 4
+   },
+   "upstream": "https://downloads.sourceforge.net"
+  },
+  "oil_homemade": {
+   "images": 2,
+   "licenses": {
+    "LicenseRef-PublicDomain": 2
+   },
+   "status": {
+    "verified": 2
+   },
+   "upstream": "https://downloads.sourceforge.net"
+  }
+ }
+}

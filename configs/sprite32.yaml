@@ -1,0 +1,124 @@
+# sprite32 1.0: the 500k-step run.
+#   python scripts/cluster.py && python scripts/build_recolor_list.py
+#   python scripts/build_text_cache.py configs/sprite32.yaml           # once: Qwen3-4B states of every caption
+#   python hf_train.py configs/sprite32.yaml
+#   python hf_train.py configs/sprite32.yaml --resume outputs_diffusers/sprite32/checkpoints/step_0100000
+
+# Data
+data_dir: "data_v13"             # only trainable images; the benchmark holdout stays in data_v12/
+output_dir: "outputs_diffusers/sprite32"
+caption_keys: ["description", "verbose_description"]   # long, short (inverted key names)
+exclude_list: null
+source_balance_alpha: 0.7
+val_split: 0.01                  # loss curves only
+image_size: 32
+channels: 4                      # premultiplied RGBA
+seed: 0
+num_workers: 8
+# Near-duplicate clusters (RMSE <= 10 on the training view) and caps on expected draws over the run.
+# Measured on an earlier run: no near-copies from sources shown 60-80 times per image, copying at 200-400. The caps are absolute draw counts over num_steps * batch_size, so they must be rechecked
+# when the length changes.
+cluster_file: "curation/clusters.tsv"
+max_exposures: 150
+max_cluster_exposures: 200
+# Flat black icons drawn in another colour half of the time, with "black" replaced in the caption (recolor.py).
+recolor_list: "curation/recolor.tsv"
+recolor_prob: 0.5
+
+# EDM (preconditioning from diffusers' EDM scheduler)
+sigma_data: 0                    # 0 = rms of the training set, computed at the start of the run
+P_mean: 0                        # 0 = ln(sigma_data)
+P_std: 1.2
+sigma_min: 0.002
+sigma_max: 80.0
+rho: 7.0
+uncertainty_weighting: true      # EDM2 u(sigma), clamped to [-6, 3]
+
+# Model: diffusers UNet2DConditionModel
+block_out_channels: [128, 256, 512]
+layers_per_block: 2
+channels_per_head: 32            # 4 / 8 / 16 heads
+time_embedding_dim: 512          # = widest level
+dropout: 0.1
+# torch.compile of this width gives NaN conv1.bias grads (Inductor bug, torch 2.10); freezing the bias (it is
+# redundant, see hf_common) makes compile clean.
+freeze_conv1_bias: true
+# Cosine attention: q and k RMS-normalised per head, logits bounded by scale * sqrt(head_dim) = 2 * sqrt(32) = 11.3.
+# (Scale 1 would cap one of 1,024 keys at ~22% of the attention mass; 2 allows ~99%.) Without it the logits of
+# one 32x32 self-attention layer grew without bound over a long run. Every val_every steps the largest logit
+# per layer is logged; a layer above its bound stops the run with a checkpoint (hf_train.py).
+qk_norm: true
+qk_norm_scale: 2.0
+conv_in_fp32: true               # bf16 input quantisation is larger than the noise at sigma < ~0.01
+
+# Text: frozen Qwen3-4B token states for cross-attention, frozen CLIP B/32 for the pooled vector (hf_text.py)
+llm_model: "Qwen/Qwen3-4B"
+llm_layer: -2                    # hidden_states index (second to last layer)
+llm_max_tokens: 64               # with the dropped <|im_start|> prefix: 63 text tokens
+text_cache_dir: "text_cache/qwen3_4b"
+# TextAdapter in the UNet: standardise (fixed statistics) -> Linear 2560->1024 -> 2 bidirectional blocks.
+text_adapter: true
+text_adapter_layers: 2
+cross_attention_dim: 1024
+text_model: "openai/clip-vit-base-patch32"
+text_embed_dim: 512
+max_text_tokens: 77
+guidance_dropout: 0.1            # caption -> ""
+# Quality (1-5) and category one-hots appended to the pooled text vector, each dropped to "no label" with
+# p 0.1, and always dropped together with the caption so that "no caption, no labels" is the guidance branch.
+# Sample with quality 5 (hf_sample --quality).
+label_cond: true
+label_dropout: 0.1
+label_drop_with_caption: true
+
+# Optimisation
+batch_size: 128
+num_steps: 500000
+learning_rate: 1.0e-4
+warmup_steps: 4000
+lr_schedule: "constant_cosine_tail"   # constant, then cosine to lr_final_ratio over the last quarter
+lr_decay_start: 375000
+lr_final_ratio: 0.1
+adam_beta2: 0.99
+weight_decay: 0.0
+grad_clip: 5.0                   # a spike guard; the median grad norm is about 2.8
+mixed_precision: "bf16"          # "no" on MPS
+compile: true
+compile_text: true               # the CLIP text tower too
+fused_adam: true
+compile_mode: "max-autotune-no-cudagraphs"
+
+# Multi-EMA (diffusers EMAModel per decay, (1+t)/(10+t) warmup)
+ema_decays: [0.999, 0.9995, 0.9999, 0.99998]
+
+# Logging / checkpoints / previews
+log_every: 100
+save_every: 10000
+keep_checkpoints: 2
+keep_checkpoint_every: 100000    # 3.8 GB each
+val_every: 10000
+val_images: 2048
+export_steps: [25000, 50000, 100000, 200000, 300000, 400000, 450000, 500000]
+sample_every: 10000
+sample_n: 2
+sample_steps: 35
+sample_guidance: 3.0
+sample_interval: [0.3, 5.0]
+sample_seed: 0
+sampler: "dpmpp_2m"
+sample_prompts:
+  - "flat red heart icon on a white background"
+  - "pixel art green sword sprite with a brown handle"
+  - "a small goblin face with red eyes"
+  - "a treasure chest overflowing with gold coins"
+  - "A stylized image depicts a sunflower against a dark green background. The sunflower has bright yellow petals forming a roughly circular shape around a dark brown circular center."
+  - "A simple, cartoon-style depiction of a blue car is shown from a head-on perspective. The car has a light blue windshield and two bright yellow circular headlights."
+  - "glossy silver shield icon with a metallic rim"
+  - "flat orange fire emoji with red and yellow flames"
+
+# Benchmark on every export (scripts/benchmark.sh QUICK, plus scripts/bench_extra.py): long/short prompted
+# FID at guidance 3, N=10000, prompt grid, rendered text, seed pairs, copies.
+benchmark_exports: true
+benchmark_ema: 0.9999
+benchmark_stats: "outputs/benchmark/eval/real_stats_holdout.npz"
+benchmark_extra: true

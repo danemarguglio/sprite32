@@ -1,0 +1,21 @@
+# Smoke run of sprite32.yaml: every code path (data_v13, caps, recolouring, text cache, benchmark hooks) on
+# 20,000 images for 3,000 steps. Not a quality measurement.
+#   python scripts/build_text_cache.py configs/smoke.yaml --train_subset
+#   python hf_train.py configs/smoke.yaml
+base: "sprite32.yaml"
+output_dir: "outputs_diffusers/smoke"
+text_cache_dir: "text_cache/smoke"
+max_images: 20000
+num_steps: 3000
+warmup_steps: 300
+lr_decay_start: 2000
+# 3,000 x 128 draws over 20,000 images is 19 per image; caps scaled so that they bind as in the full run
+max_exposures: 24
+max_cluster_exposures: 32
+val_every: 500
+sample_every: 1000
+save_every: 1000
+keep_checkpoint_every: 0
+export_steps: [3000]
+ema_decays: [0.999]
+benchmark_ema: 0.999

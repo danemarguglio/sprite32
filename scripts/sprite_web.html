@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#E7E5EF">
+<title>sprite32</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #E7E5EF;
+  --surface: #F4F3F9;
+  --ink: #24213B;
+  --muted: #67637F;
+  --line: #CDC9DC;
+  --go: #FFD23F;
+  --go-deep: #E8B800;
+  --err: #B3261E;
+  --tile: 80px;
+  --bar: calc(76px + env(safe-area-inset-bottom));
+  font-family: "Bricolage Grotesque", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-tap-highlight-color: transparent;
+}
+* { box-sizing: border-box; }
+body { margin: 0; padding-bottom: calc(var(--bar) + 24px); }
+button, textarea, input { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+img.px { image-rendering: pixelated; image-rendering: crisp-edges; display: block; }
+
+.wrap { max-width: 640px; margin: 0 auto; padding: 0 16px; }
+
+header { display: flex; align-items: baseline; justify-content: space-between; padding: 18px 0 10px; }
+.mark { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.03em; margin: 0; }
+.state { font-size: 0.875rem; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+.dot { width: 8px; height: 8px; border-radius: 1px; background: var(--muted); }
+.state[data-s="ready"] .dot { background: #2E9E5B; }
+.state[data-s="loading"] .dot { background: var(--go-deep); animation: blink 0.8s steps(2) infinite; }
+@keyframes blink { 50% { opacity: 0.2; } }
+
+.compose { background: var(--surface); border: 1.5px solid var(--line); border-radius: 14px; padding: 12px; }
+.compose textarea {
+  width: 100%; border: 0; background: transparent; resize: none; outline: none;
+  font-size: 1.125rem; line-height: 1.4; min-height: 3.2em; max-height: 9em; padding: 2px;
+}
+.compose textarea::placeholder { color: #9b97b3; }
+.tools { display: flex; gap: 8px; margin-top: 8px; align-items: center; flex-wrap: wrap; }
+.chip {
+  border: 1.5px solid var(--ink); background: transparent; border-radius: 999px;
+  padding: 7px 14px; font-weight: 600; font-size: 0.9375rem;
+}
+.chip:disabled { opacity: 0.35; cursor: default; }
+.chip.ghost { border-color: transparent; color: var(--muted); padding-left: 6px; padding-right: 6px; }
+.spacer { flex: 1; }
+.from { font-size: 0.8125rem; color: var(--muted); margin-top: 8px; }
+.from button { border: 0; background: none; text-decoration: underline; color: var(--ink); padding: 0 2px; }
+details.more { margin-top: 6px; font-size: 0.875rem; color: var(--muted); }
+details.more summary { cursor: pointer; padding: 4px 0; list-style: none; }
+details.more summary::-webkit-details-marker { display: none; }
+details.more[open] summary { color: var(--ink); }
+.strength { display: flex; align-items: center; gap: 10px; padding: 6px 0 2px; }
+.strength input { flex: 1; accent-color: var(--ink); }
+.strength output { min-width: 2.5em; text-align: right; color: var(--ink); font-weight: 600; }
+
+.result { margin-top: 22px; }
+.result-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+.result-head p { margin: 0; font-size: 0.9375rem; line-height: 1.35; color: var(--muted); max-width: 60ch; }
+.result-head p b { color: var(--ink); font-weight: 600; }
+.bgs { display: flex; gap: 4px; flex-shrink: 0; }
+.bgs button { width: 30px; height: 30px; border-radius: 7px; border: 1.5px solid var(--line); padding: 0; }
+.bgs button[aria-pressed="true"] { border-color: var(--ink); box-shadow: inset 0 0 0 2px var(--surface); }
+.bgs .b-checker { background: repeating-conic-gradient(#C9C5D8 0 25%, #EEEDF4 0 50%) 0 0 / 10px 10px; }
+.bgs .b-light { background: #FAFAFC; }
+.bgs .b-dark { background: #24213B; }
+
+.sheet { --cell: 8px; border-radius: 12px; padding: 10px; display: grid;
+  grid-template-columns: repeat(4, var(--tile)); gap: 6px; justify-content: center; }
+.sheet, .lb-stage { background: repeating-conic-gradient(#C9C5D8 0 25%, #EEEDF4 0 50%) 0 0 / 16px 16px; }
+body[data-bg="light"] .sheet, body[data-bg="light"] .lb-stage { background: #FAFAFC; }
+body[data-bg="dark"] .sheet, body[data-bg="dark"] .lb-stage { background: #24213B; }
+.sheet button { border: 0; padding: 0; background: none; border-radius: 4px; }
+.sheet img { width: var(--tile); height: var(--tile); }
+.sheet .ghost-tile { width: var(--tile); height: var(--tile); border-radius: 4px;
+  background: rgba(36, 33, 59, 0.07); }
+.sheet .model-label { grid-column: 1 / -1; justify-self: start; font-size: 0.8125rem; font-weight: 700;
+  background: var(--surface); color: var(--ink); padding: 3px 9px; border-radius: 999px; }
+.sheet .model-label + * ~ .model-label { margin-top: 8px; }
+.empty { text-align: center; color: var(--muted); padding: 36px 12px; font-size: 0.9375rem; line-height: 1.5; }
+.error { color: var(--err); font-size: 0.9375rem; margin: 10px 0 0; }
+
+.history { margin-top: 34px; }
+.history h2 { font-size: 1.125rem; font-weight: 800; margin: 0 0 10px; letter-spacing: -0.01em; }
+.hist-item { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: center; width: 100%;
+  text-align: left; background: none; border: 0; border-top: 1.5px solid var(--line); padding: 12px 0; }
+.hist-thumbs { display: grid; grid-template-columns: repeat(2, 32px); gap: 2px; padding: 4px; border-radius: 6px;
+  background: repeating-conic-gradient(#C9C5D8 0 25%, #EEEDF4 0 50%) 0 0 / 8px 8px; }
+body[data-bg="light"] .hist-thumbs { background: #FAFAFC; }
+body[data-bg="dark"] .hist-thumbs { background: #24213B; }
+.hist-thumbs img { width: 32px; height: 32px; }
+.hist-text { font-size: 0.9375rem; line-height: 1.35; overflow: hidden; display: -webkit-box;
+  -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+.hist-when { display: block; font-size: 0.8125rem; color: var(--muted); margin-top: 2px; }
+.hist-item[aria-current="true"] .hist-text { font-weight: 600; }
+.load-more { margin: 12px auto 0; display: block; }
+
+.bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 5;
+  padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+  background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); border-top: 1.5px solid var(--line); }
+.bar .wrap { display: flex; gap: 10px; padding: 0; }
+.go { position: relative; overflow: hidden; flex: 1; height: 56px; border: 2px solid var(--ink); border-radius: 14px;
+  background: var(--go); font-size: 1.25rem; font-weight: 800; letter-spacing: -0.01em; }
+.go .fill { position: absolute; inset: 0; width: 0; background: var(--go-deep); transition: width 0.25s linear; }
+.go .label { position: relative; }
+.go:disabled { cursor: default; }
+.go[data-busy="true"] { background: #F7E7A6; }
+.again { height: 56px; border: 2px solid var(--ink); border-radius: 14px; background: var(--surface);
+  font-weight: 700; padding: 0 18px; font-size: 1rem; }
+.again:disabled { opacity: 0.35; cursor: default; }
+
+dialog.lb { border: 0; padding: 0; width: min(100vw, 560px); max-width: 100vw; max-height: 100dvh;
+  background: var(--surface); color: var(--ink); border-radius: 18px; }
+dialog.lb::backdrop { background: rgba(36, 33, 59, 0.6); }
+.lb-stage { display: grid; place-items: center; padding: 20px; }
+.lb-stage img { width: var(--big, 320px); height: var(--big, 320px); }
+.lb-body { padding: 14px 16px 18px; }
+.lb-body p { margin: 0 0 12px; font-size: 0.9375rem; line-height: 1.4; }
+.lb-meta { font-size: 0.8125rem; color: var(--muted); }
+.lb-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.lb-row a.chip { text-decoration: none; color: var(--ink); }
+.lb-nav { display: flex; justify-content: space-between; margin-top: 12px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .go .fill { transition: none; }
+  .state[data-s="loading"] .dot { animation: none; }
+}
+</style>
+</head>
+<body data-bg="checker">
+<div class="wrap">
+  <header>
+    <h1 class="mark">sprite32</h1>
+    <div class="state" id="state" data-s="cold" role="status"><span class="dot"></span><span id="stateText">connecting</span></div>
+  </header>
+
+  <section class="compose" aria-label="Prompt">
+    <textarea id="prompt" rows="2" maxlength="400" placeholder="Describe a sprite, e.g. a pelican riding a bicycle"
+      autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="go"></textarea>
+    <div class="tools">
+      <button class="chip" id="surprise" type="button">Surprise me</button>
+      <button class="chip" id="expand" type="button" disabled>Expand</button>
+      <span class="spacer"></span>
+      <button class="chip ghost" id="clear" type="button" hidden>Clear</button>
+    </div>
+    <div class="from" id="from" hidden></div>
+    <details class="more" id="more">
+      <summary id="moreSummary">Prompt strength 3</summary>
+      <div class="strength">
+        <input type="range" id="guidance" min="1" max="8" step="0.5" value="3" aria-label="Prompt strength">
+        <output id="gOut">3</output>
+      </div>
+      <div class="lb-meta">How closely sprites follow the prompt. 3 is the tested default; higher is bolder but less varied.</div>
+    </details>
+  </section>
+
+  <section class="result" id="result" aria-live="polite">
+    <div class="result-head">
+      <p id="resultText">Nothing generated yet.</p>
+      <div class="bgs" role="group" aria-label="Background">
+        <button class="b-checker" data-bg="checker" aria-pressed="true" aria-label="Checker background"></button>
+        <button class="b-light" data-bg="light" aria-pressed="false" aria-label="Light background"></button>
+        <button class="b-dark" data-bg="dark" aria-pressed="false" aria-label="Dark background"></button>
+      </div>
+    </div>
+    <div class="sheet" id="sheet"></div>
+    <div class="empty" id="empty">Type an idea and press Generate, or tap Surprise me.</div>
+    <p class="error" id="error" hidden></p>
+  </section>
+
+  <section class="history" aria-label="History">
+    <h2>History</h2>
+    <div id="hist"></div>
+    <button class="chip load-more" id="more-hist" type="button" hidden>Show older</button>
+  </section>
+</div>
+
+<div class="bar">
+  <div class="wrap">
+    <button class="go" id="go" type="button"><span class="fill" id="fill"></span><span class="label" id="goLabel">Generate</span></button>
+    <button class="again" id="again" type="button" disabled>Again</button>
+  </div>
+</div>
+
+<dialog class="lb" id="lb" aria-label="Sprite">
+  <div class="lb-stage"><img class="px" id="lbImg" alt=""></div>
+  <div class="lb-body">
+    <p id="lbPrompt"></p>
+    <div class="lb-row">
+      <a class="chip" id="dl512" download>Save 512 px</a>
+      <a class="chip" id="dl32" download>Save 32 px</a>
+      <button class="chip ghost" id="lbClose" type="button">Close</button>
+    </div>
+    <div class="lb-nav">
+      <button class="chip" id="lbPrev" type="button" aria-label="Previous sprite">Previous</button>
+      <span class="lb-meta" id="lbMeta"></span>
+      <button class="chip" id="lbNext" type="button" aria-label="Next sprite">Next</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const els = { prompt: $("prompt"), go: $("go"), again: $("again"), fill: $("fill"), goLabel: $("goLabel"),
+  sheet: $("sheet"), empty: $("empty"), error: $("error"), resultText: $("resultText"), hist: $("hist"),
+  state: $("state"), stateText: $("stateText"), expand: $("expand"), surprise: $("surprise"), clear: $("clear"),
+  from: $("from"), guidance: $("guidance"), gOut: $("gOut"), moreSummary: $("moreSummary") };
+let current = null;      // meta of the shown result
+let busy = false;
+let historyItems = [];
+let lbIndex = 0;
+
+// ---- tile size: an integer number of device pixels per sprite pixel, so nearest-neighbour stays crisp
+function sizeTiles() {
+  const dpr = window.devicePixelRatio || 1;
+  const avail = Math.min(document.querySelector(".wrap").clientWidth, 640) - 20 - 3 * 6;
+  const per = Math.max(1, Math.floor((avail / 4) * dpr / 32));
+  document.documentElement.style.setProperty("--tile", (per * 32 / dpr) + "px");
+  const bigAvail = Math.min(window.innerWidth, 560) - 40;
+  const bigPer = Math.max(1, Math.floor(Math.min(bigAvail, window.innerHeight * 0.5) * dpr / 32));
+  document.documentElement.style.setProperty("--big", (bigPer * 32 / dpr) + "px");
+}
+addEventListener("resize", sizeTiles);
+sizeTiles();
+
+// ---- background toggle
+const savedBg = localStorage.getItem("s32bg");
+function setBg(bg) {
+  document.body.dataset.bg = bg;
+  document.querySelectorAll(".bgs button").forEach(b => b.setAttribute("aria-pressed", b.dataset.bg === bg));
+  localStorage.setItem("s32bg", bg);
+}
+document.querySelectorAll(".bgs button").forEach(b => b.onclick = () => setBg(b.dataset.bg));
+if (savedBg) setBg(savedBg);
+
+// ---- guidance (the one tucked-away option)
+function setGuidance(v) {
+  els.guidance.value = v; els.gOut.textContent = v;
+  els.moreSummary.textContent = "Prompt strength " + v;
+  localStorage.setItem("s32g", v);
+}
+els.guidance.oninput = () => setGuidance(els.guidance.value);
+if (localStorage.getItem("s32g")) setGuidance(localStorage.getItem("s32g"));
+
+// ---- prompt box
+function autoGrow() {
+  els.prompt.style.height = "auto";
+  els.prompt.style.height = els.prompt.scrollHeight + "px";
+  const has = els.prompt.value.trim().length > 0;
+  els.expand.disabled = !has || busy;
+  els.clear.hidden = !has;
+}
+els.prompt.addEventListener("input", () => { els.from.hidden = true; autoGrow(); });
+els.prompt.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); generate(); }
+});
+els.clear.onclick = () => { els.prompt.value = ""; els.from.hidden = true; autoGrow(); els.prompt.focus(); };
+
+async function api(path, opts = {}) {
+  const r = await fetch(path, { headers: { "Content-Type": "application/json" }, ...opts });
+  let body = null;
+  try { body = await r.json(); } catch (_) { /* not json */ }
+  if (!r.ok) {
+    let msg = body && body.detail;
+    if (Array.isArray(msg)) msg = msg.map(d => d.msg).join("; ");
+    throw new Error(msg || ("Server returned " + r.status));
+  }
+  return body;
+}
+
+function showError(msg) { els.error.textContent = msg; els.error.hidden = !msg; }
+
+// ---- status
+const stateWords = { ready: "ready", loading: "warming up", cold: "asleep, wakes on Generate" };
+function setState(s) {
+  els.state.dataset.s = s;
+  els.stateText.textContent = stateWords[s] || s;
+}
+let models = [], perModel = 16;  // model labels the server draws with, and sprites per model
+async function pollStatus() {
+  try {
+    const s = await api("/api/status");
+    setState(s.state);
+    models = s.models || []; perModel = s.defaults.n;
+  }
+  catch (_) { els.stateText.textContent = "server unreachable"; els.state.dataset.s = "cold"; }
+}
+pollStatus();
+setInterval(() => { if (!busy) pollStatus(); }, 15000);
+
+// ---- busy state
+function setBusy(on, label) {
+  busy = on;
+  els.go.disabled = on; els.go.dataset.busy = on;
+  els.again.disabled = on || !current;
+  els.surprise.disabled = on;
+  els.expand.disabled = on || !els.prompt.value.trim();
+  els.goLabel.textContent = on ? label : "Generate";
+  if (!on) els.fill.style.width = "0";
+}
+function progress(frac, label) {
+  els.fill.style.width = Math.round(frac * 100) + "%";
+  els.goLabel.textContent = label;
+}
+
+// One block of n tiles per model, each under the model's name when there is more than one model.
+function fillSheet(labels, n, tile) {
+  const nodes = [];
+  labels.forEach((label, k) => {
+    if (labels.length > 1) {
+      const h = document.createElement("div"); h.className = "model-label"; h.textContent = label;
+      nodes.push(h);
+    }
+    for (let i = 0; i < n; i++) nodes.push(tile(k * n + i));
+  });
+  els.sheet.replaceChildren(...nodes);
+}
+const modelLabels = (m) => m.models ? m.models.map(x => x.label) : [""];
+function placeholders() {
+  fillSheet(models.length ? models : [""], perModel, () => {
+    const d = document.createElement("div"); d.className = "ghost-tile"; return d;
+  });
+  els.empty.hidden = true;
+}
+
+// ---- generate
+async function generate(promptOverride) {
+  if (busy) return;
+  const prompt = (promptOverride ?? els.prompt.value).trim();
+  if (!prompt) { els.prompt.focus(); showError("Type a prompt first, or tap Surprise me."); return; }
+  showError("");
+  setBusy(true, "Sending");
+  placeholders();
+  els.resultText.innerHTML = "";
+  els.resultText.append(document.createTextNode("Generating "), Object.assign(document.createElement("b"), { textContent: prompt }));
+  try {
+    const { job } = await api("/api/generate", { method: "POST",
+      body: JSON.stringify({ prompt, n: perModel, guidance: parseFloat(els.guidance.value) }) });
+    while (true) {
+      await new Promise(r => setTimeout(r, 350));
+      const j = await api("/api/job/" + job);
+      if (j.engine) setState(j.engine);
+      if (j.state === "done") { show(j.result); historyItems.unshift(j.result); renderHistory(); break; }
+      if (j.state === "error") throw new Error(j.error || "Generation failed.");
+      if (j.state === "warming") progress(0, "Warming up the model");
+      else if (j.state === "queued") progress(0, "Waiting for the GPU");
+      else progress(j.progress, "Drawing " + Math.round(j.progress * 100) + "%");
+    }
+  } catch (e) {
+    showError(e.message);
+    if (current) show(current); else { els.sheet.replaceChildren(); els.empty.hidden = false; els.resultText.textContent = "Nothing generated yet."; }
+  } finally {
+    setBusy(false);
+    pollStatus();
+  }
+}
+els.go.onclick = () => generate();
+els.again.onclick = () => current && generate(current.prompt);
+
+// ---- show a result
+const imgUrl = (m, i, scale) => `/img/${m.id}/${String(i).padStart(2, "0")}.png` + (scale ? `?scale=${scale}` : "");
+function show(meta) {
+  current = meta;
+  els.empty.hidden = true;
+  els.again.disabled = busy;
+  els.resultText.innerHTML = "";
+  els.resultText.append(Object.assign(document.createElement("b"), { textContent: meta.prompt }));
+  fillSheet(modelLabels(meta), meta.n, (i) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.setAttribute("aria-label", "Open sprite " + (i + 1));
+    const img = document.createElement("img");
+    img.className = "px"; img.src = imgUrl(meta, i); img.alt = ""; img.width = 32; img.height = 32;
+    b.append(img);
+    b.onclick = () => openLb(i);
+    return b;
+  });
+  document.querySelectorAll(".hist-item").forEach(h => h.setAttribute("aria-current", h.dataset.id === meta.id));
+}
+
+// ---- lightbox
+const lb = $("lb");
+function openLb(i) {
+  lbIndex = i;
+  const m = current;
+  $("lbImg").src = imgUrl(m, i, 16);
+  $("lbPrompt").textContent = m.prompt;
+  const labels = modelLabels(m);
+  $("lbMeta").textContent = `${i % m.n + 1} of ${m.n}` + (labels.length > 1 ? `, ${labels[Math.floor(i / m.n)]}` : "");
+  const base = m.prompt.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40) || "sprite";
+  const a512 = $("dl512"), a32 = $("dl32");
+  a512.href = imgUrl(m, i, 16); a512.download = `${base}-${m.id}-${i}-512.png`;
+  a32.href = imgUrl(m, i); a32.download = `${base}-${m.id}-${i}-32.png`;
+  if (!lb.open) lb.showModal();
+}
+$("lbClose").onclick = () => lb.close();
+const lbCount = () => current.n * modelLabels(current).length;
+$("lbPrev").onclick = () => openLb((lbIndex + lbCount() - 1) % lbCount());
+$("lbNext").onclick = () => openLb((lbIndex + 1) % lbCount());
+lb.addEventListener("click", (e) => { if (e.target === lb) lb.close(); });
+lb.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowLeft") $("lbPrev").click();
+  if (e.key === "ArrowRight") $("lbNext").click();
+});
+let touchX = null;
+lb.addEventListener("touchstart", (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+lb.addEventListener("touchend", (e) => {
+  if (touchX === null) return;
+  const dx = e.changedTouches[0].clientX - touchX; touchX = null;
+  if (Math.abs(dx) > 50) (dx < 0 ? $("lbNext") : $("lbPrev")).click();
+});
+
+// ---- surprise / expand
+els.surprise.onclick = async () => {
+  if (busy) return;
+  try {
+    const { prompt } = await api("/api/surprise");
+    els.prompt.value = prompt; els.from.hidden = true; autoGrow();
+    generate(prompt);
+  } catch (e) { showError(e.message); }
+};
+els.expand.onclick = async () => {
+  const idea = els.prompt.value.trim();
+  if (!idea || busy) return;
+  showError("");
+  setBusy(true, "Writing a caption");
+  try {
+    const { caption } = await api("/api/expand", { method: "POST", body: JSON.stringify({ idea }) });
+    els.prompt.value = caption; autoGrow();
+    els.from.replaceChildren(document.createTextNode("Expanded from “" + idea + "”. "));
+    const undo = document.createElement("button"); undo.type = "button"; undo.textContent = "Undo";
+    undo.onclick = () => { els.prompt.value = idea; els.from.hidden = true; autoGrow(); };
+    els.from.append(undo);
+    els.from.hidden = false;
+  } catch (e) { showError(e.message); }
+  finally { setBusy(false); pollStatus(); }
+};
+
+// ---- history
+function when(iso) {
+  const d = new Date(iso), now = new Date();
+  const sameDay = d.toDateString() === now.toDateString();
+  return sameDay ? d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+                 : d.toLocaleDateString([], { month: "short", day: "numeric" }) + ", " +
+                   d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+}
+function renderHistory() {
+  els.hist.replaceChildren(...historyItems.map(m => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "hist-item"; b.dataset.id = m.id;
+    b.setAttribute("aria-current", current && current.id === m.id);
+    const th = document.createElement("span"); th.className = "hist-thumbs";
+    const thumbs = m.models && m.n >= 2 ? [0, 1, m.n, m.n + 1] : Array.from({ length: Math.min(4, m.n) }, (_, i) => i);
+    for (const i of thumbs) {  // with two models: two sprites from each, one model per row
+      const img = document.createElement("img"); img.className = "px"; img.src = imgUrl(m, i); img.alt = ""; img.loading = "lazy";
+      th.append(img);
+    }
+    const t = document.createElement("span");
+    const txt = document.createElement("span"); txt.className = "hist-text"; txt.textContent = m.prompt;
+    const w = document.createElement("span"); w.className = "hist-when";
+    w.textContent = when(m.created) + (m.guidance !== 3 ? ` (strength ${m.guidance})` : "");
+    t.append(txt, w);
+    b.append(th, t);
+    b.onclick = () => {
+      els.prompt.value = m.prompt; els.from.hidden = true; autoGrow();
+      show(m); showError("");
+      window.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+    };
+    return b;
+  }));
+  if (!historyItems.length) {
+    const p = document.createElement("p"); p.className = "lb-meta";
+    p.textContent = "Every batch you generate is kept here, on any device.";
+    els.hist.append(p);
+  }
+}
+async function loadHistory(before) {
+  try {
+    const q = before ? "?before=" + encodeURIComponent(before) : "";
+    const { items, more } = await api("/api/history" + q);
+    historyItems = before ? historyItems.concat(items) : items;
+    renderHistory();
+    $("more-hist").hidden = !more;
+    if (!before && items.length && !current) { show(items[0]); els.prompt.value = items[0].prompt; autoGrow(); }
+  } catch (e) { showError("Could not load history: " + e.message); }
+}
+$("more-hist").onclick = () => historyItems.length && loadHistory(historyItems[historyItems.length - 1].id);
+loadHistory();
+autoGrow();
+</script>
+</body>
+</html>

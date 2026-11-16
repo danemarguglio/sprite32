@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS and editors
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# Secrets
+.env
+gcp-sa-*.json
+*-sa-key.json
+
+# Data, weights and outputs
+data/
+data_*/
+curation/
+OpenGameArt-CC0/
+weights/
+outputs/
+outputs_diffusers/
+text_cache/
+onnx_export/
+*.log
+
+# Images; the ones in release/ are added with git add -f
+*.png
+*.gif
+*.jpg
+*.jpeg
+
+.claude/

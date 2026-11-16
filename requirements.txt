@@ -1,0 +1,19 @@
+# Sampling, training and evaluation: hf_*.py, scripts/bench_extra.py.
+# Trained and benchmarked with Python 3.13, torch 2.10, diffusers 0.36, transformers 4.57. Sampling also
+# checked with torch 2.15, diffusers 0.43, transformers 5.23: the same sprites, not the same bytes.
+torch>=2.6
+torchvision
+diffusers>=0.36
+transformers>=4.57
+accelerate
+safetensors
+numpy
+pillow
+pyyaml
+scipy
+tqdm
+# hf_eval.py (FID)
+clean-fid>=0.1.35
+# scripts/sprite_web.py
+fastapi
+uvicorn

@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>sprite32 monitor</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0e0e10;
+    --surface: #18181b;
+    --surface2: #1e1e22;
+    --border: #2a2a2e;
+    --text: #e4e4e7;
+    --text-dim: #71717a;
+    --accent: #818cf8;
+    --accent-dim: rgba(129, 140, 248, 0.15);
+    --green: #4ade80;
+    --red: #f87171;
+    --yellow: #fbbf24;
+    --radius: 8px;
+  }
+
+  body {
+    font-family: 'SF Mono', 'Fira Code', 'JetBrains Mono', monospace;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 24px 20px;
+  }
+
+  /* Header */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  header h1 {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+  }
+
+  header h1 span { color: var(--text-dim); font-weight: 400; }
+
+  select {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 8px 12px;
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    min-width: 180px;
+  }
+
+  select:focus { outline: none; border-color: var(--accent); }
+
+  /* Status bar */
+  .status-bar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: 900px) {
+    .status-bar {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (max-width: 500px) {
+    .status-bar {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 10px 12px;
+    min-width: 0;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-dim);
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+  }
+
+  .stat-value {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--red);
+    display: inline-block;
+  }
+
+  .pulse-dot.active {
+    background: var(--green);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* Chart */
+  .chart-container {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 24px;
+    position: relative;
+    height: 340px;
+  }
+
+  .chart-container canvas { width: 100% !important; }
+
+  /* Gallery */
+  .gallery-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .gallery-header h2 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-dim);
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+
+  .sample-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+
+  .sample-card:hover { border-color: var(--accent); }
+
+  .sample-card img {
+    width: 100%;
+    display: block;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+
+  .sample-card .sample-label {
+    padding: 6px 10px;
+    font-size: 11px;
+    color: var(--text-dim);
+    border-top: 1px solid var(--border);
+  }
+
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .lightbox.open { display: flex; }
+
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    border-radius: var(--radius);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+
+  /* Progress bar */
+  .progress-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .progress-bar {
+    flex: 1;
+    height: 6px;
+    background: var(--surface2);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 3px;
+    transition: width 0.5s ease;
+    width: 0%;
+  }
+
+  .progress-text {
+    font-size: 11px;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+
+  /* Empty states */
+  .empty {
+    text-align: center;
+    color: var(--text-dim);
+    padding: 40px 20px;
+    font-size: 14px;
+  }
+
+  .empty code {
+    background: var(--surface2);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>sprite32 <span>monitor</span></h1>
+    <select id="run-select">
+      <option value="">loading runs...</option>
+    </select>
+  </header>
+
+  <div class="status-bar">
+    <div class="stat-card">
+      <div class="stat-label"><span class="pulse-dot" id="active-dot"></span> Step</div>
+      <div class="stat-value" id="stat-step">—</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Loss</div>
+      <div class="stat-value" id="stat-loss">—</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Learning Rate</div>
+      <div class="stat-value" id="stat-lr">—</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Speed</div>
+      <div class="stat-value" id="stat-speed">—</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Val Loss</div>
+      <div class="stat-value" id="stat-val-loss">—</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">FID</div>
+      <div class="stat-value" id="stat-fid">—</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">ETA</div>
+      <div class="stat-value" id="stat-eta">—</div>
+    </div>
+  </div>
+
+  <div class="progress-wrap" id="progress-wrap" style="display:none">
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    <span class="progress-text" id="progress-text"></span>
+  </div>
+
+  <div class="chart-container">
+    <canvas id="loss-chart"></canvas>
+  </div>
+
+  <div class="chart-container" id="eval-chart-container" style="display:none">
+    <canvas id="eval-chart"></canvas>
+  </div>
+
+  <div class="gallery-header">
+    <h2>Samples</h2>
+    <span id="sample-count" style="font-size:12px;color:var(--text-dim)"></span>
+  </div>
+  <div class="gallery" id="gallery"></div>
+
+  <div id="empty-msg" class="empty" style="display:none">
+    Select a training run above to view progress.
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img" src="" alt="Sample enlarged">
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const runSelect = $('#run-select');
+const gallery = $('#gallery');
+const lightbox = $('#lightbox');
+const lightboxImg = $('#lightbox-img');
+const emptyMsg = $('#empty-msg');
+
+let chart = null;
+let evalChart = null;
+let currentRun = '';
+let lastStep = -1;
+let knownSamples = new Set();
+let pollTimer = null;
+let totalSteps = null;
+
+// --- Chart setup ---
+function initChart() {
+  const ctx = $('#loss-chart').getContext('2d');
+  chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: [],
+      datasets: [
+        {
+          label: 'Loss (raw)',
+          data: [],
+          borderColor: 'rgba(129, 140, 248, 0.2)',
+          borderWidth: 1,
+          pointRadius: 0,
+          tension: 0,
+          yAxisID: 'y',
+          order: 2,
+        },
+        {
+          label: 'Loss (smoothed)',
+          data: [],
+          borderColor: '#818cf8',
+          borderWidth: 2,
+          pointRadius: 0,
+          tension: 0.3,
+          yAxisID: 'y',
+          order: 1,
+        },
+        {
+          label: 'Learning Rate',
+          data: [],
+          borderColor: 'rgba(251, 191, 36, 0.5)',
+          borderWidth: 1,
+          pointRadius: 0,
+          borderDash: [4, 4],
+          tension: 0.3,
+          yAxisID: 'y1',
+          order: 3,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: {
+          labels: { color: '#71717a', font: { family: "'SF Mono', monospace", size: 11 } }
+        },
+        tooltip: {
+          backgroundColor: '#18181b',
+          titleColor: '#e4e4e7',
+          bodyColor: '#e4e4e7',
+          borderColor: '#2a2a2e',
+          borderWidth: 1,
+          titleFont: { family: "'SF Mono', monospace" },
+          bodyFont: { family: "'SF Mono', monospace" },
+          callbacks: {
+            label: ctx => {
+              const label = ctx.dataset.label || '';
+              const v = ctx.parsed.y;
+              if (label.includes('Learning Rate')) return `${label}: ${v.toExponential(2)}`;
+              return `${label}: ${v.toFixed(6)}`;
+            },
+          },
+        },
+      },
+      scales: {
+        x: {
+          title: { display: true, text: 'Step', color: '#71717a', font: { family: "'SF Mono', monospace", size: 11 } },
+          ticks: { color: '#71717a', font: { family: "'SF Mono', monospace", size: 10 }, maxTicksLimit: 12 },
+          grid: { color: 'rgba(42, 42, 46, 0.5)' },
+        },
+        y: {
+          title: { display: true, text: 'Loss', color: '#71717a', font: { family: "'SF Mono', monospace", size: 11 } },
+          ticks: { color: '#71717a', font: { family: "'SF Mono', monospace", size: 10 } },
+          grid: { color: 'rgba(42, 42, 46, 0.5)' },
+          position: 'left',
+        },
+        y1: {
+          title: { display: true, text: 'LR', color: '#71717a', font: { family: "'SF Mono', monospace", size: 11 } },
+          ticks: {
+            color: '#71717a',
+            font: { family: "'SF Mono', monospace", size: 10 },
+            callback: v => v.toExponential(1),
+          },
+          grid: { drawOnChartArea: false },
+          position: 'right',
+        },
+      },
+    },
+  });
+}
+
+function initEvalChart() {
+  const ctx = $('#eval-chart').getContext('2d');
+  evalChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: [],
+      datasets: [
+        {
+          label: 'Val Loss',
+          data: [],
+          borderColor: '#4ade80',
+          backgroundColor: 'rgba(74, 222, 128, 0.1)',
+          borderWidth: 2,
+          pointRadius: 4,
+          pointBackgroundColor: '#4ade80',
+          tension: 0.3,
+          yAxisID: 'y',
+        },
+        {
+          label: 'FID',
+          data: [],
+          borderColor: '#f87171',
+          backgroundColor: 'rgba(248, 113, 113, 0.1)',
+          borderWidth: 2,
+          pointRadius: 4,
+          pointBackgroundColor: '#f87171',
+          tension: 0.3,
+          yAxisID: 'y1',
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: {
+          labels: { color: '#71717a', font: { family: "'SF Mono', monospace", size: 11 } }
+        },
+        tooltip: {
+          backgroundColor: '#18181b',
+          titleColor: '#e4e4e7',
+          bodyColor: '#e4e4e7',
+          borderColor: '#2a2a2e',
+          borderWidth: 1,
+          titleFont: { family: "'SF Mono', monospace" },
+          bodyFont: { family: "'SF Mono', monospace" },
+        },
+      },
+      scales: {
+        x: {
+          title: { display: true, text: 'Step', color: '#71717a', font: { family: "'SF Mono', monospace", size: 11 } },
+          ticks: { color: '#71717a', font: { family: "'SF Mono', monospace", size: 10 }, maxTicksLimit: 12 },
+          grid: { color: 'rgba(42, 42, 46, 0.5)' },
+        },
+        y: {
+          title: { display: true, text: 'Val Loss', color: '#4ade80', font: { family: "'SF Mono', monospace", size: 11 } },
+          ticks: { color: '#71717a', font: { family: "'SF Mono', monospace", size: 10 } },
+          grid: { color: 'rgba(42, 42, 46, 0.5)' },
+          position: 'left',
+        },
+        y1: {
+          title: { display: true, text: 'FID', color: '#f87171', font: { family: "'SF Mono', monospace", size: 11 } },
+          ticks: { color: '#71717a', font: { family: "'SF Mono', monospace", size: 10 } },
+          grid: { drawOnChartArea: false },
+          position: 'right',
+        },
+      },
+    },
+  });
+}
+
+// --- EMA smoothing ---
+function emaSmooth(values, alpha = 0.05) {
+  const out = [];
+  let s = values[0] ?? 0;
+  for (const v of values) {
+    s = alpha * v + (1 - alpha) * s;
+    out.push(s);
+  }
+  return out;
+}
+
+// --- Data fetching ---
+async function fetchJSON(url) {
+  const res = await fetch(url);
+  if (!res.ok) return null;
+  return res.json();
+}
+
+async function loadRuns() {
+  const runs = await fetchJSON('/api/runs');
+  if (!runs) return;
+
+  runSelect.innerHTML = '';
+  if (runs.length === 0) {
+    runSelect.innerHTML = '<option value="">no runs found</option>';
+    emptyMsg.style.display = 'block';
+    emptyMsg.innerHTML = 'No training runs found in <code>outputs/</code>.';
+    return;
+  }
+
+  runSelect.innerHTML = '<option value="">select a run</option>';
+  for (const r of runs) {
+    const opt = document.createElement('option');
+    opt.value = r.name;
+    let tag = '';
+    if (r.has_log && r.has_samples) tag = ' (log + samples)';
+    else if (r.has_log) tag = ' (log only)';
+    else tag = ' (samples only)';
+    opt.textContent = r.name + tag;
+    runSelect.appendChild(opt);
+  }
+
+  // Auto-select the most recently updated run
+  if (runs.length > 0) {
+    const latest = runs.reduce((a, b) => ((b.mtime || 0) > (a.mtime || 0) ? b : a));
+    runSelect.value = latest.name;
+    selectRun(latest.name);
+  }
+}
+
+function selectRun(name) {
+  currentRun = name;
+  lastStep = -1;
+  totalSteps = null;
+  knownSamples.clear();
+  gallery.innerHTML = '';
+  emptyMsg.style.display = name ? 'none' : 'block';
+
+  // Clear charts
+  if (chart) {
+    chart.data.labels = [];
+    chart.data.datasets.forEach(ds => ds.data = []);
+    chart.update();
+  }
+  if (evalChart) {
+    evalChart.data.labels = [];
+    evalChart.data.datasets.forEach(ds => ds.data = []);
+    evalChart.update();
+  }
+  $('#eval-chart-container').style.display = 'none';
+  $('#progress-wrap').style.display = 'none';
+
+  // Reset stat cards
+  ['stat-step','stat-loss','stat-lr','stat-speed','stat-val-loss','stat-fid','stat-eta'].forEach(
+    id => $('#' + id).textContent = '—'
+  );
+  $('#active-dot').className = 'pulse-dot';
+  $('#sample-count').textContent = '';
+
+  if (name) {
+    poll();
+  }
+}
+
+async function poll() {
+  if (!currentRun) return;
+
+  // Fetch status (cheap)
+  const status = await fetchJSON(`/api/status/${currentRun}`);
+  if (status && !status.error) {
+    updateStatus(status);
+
+    // If step increased or first load, fetch new log entries
+    if (status.step !== null && (status.step > lastStep || lastStep === -1)) {
+      const entries = await fetchJSON(`/api/log/${currentRun}?since_step=${lastStep}`);
+      if (entries && entries.length > 0) {
+        appendLogEntries(entries);
+        lastStep = entries[entries.length - 1].step;
+      }
+    }
+  }
+
+  // Check for new samples
+  const samples = await fetchJSON(`/api/samples/${currentRun}`);
+  if (samples && samples.length > 0) {
+    updateGallery(samples);
+  }
+
+  // Schedule next poll
+  clearTimeout(pollTimer);
+  pollTimer = setTimeout(poll, 5000);
+}
+
+function updateStatus(status) {
+  const dot = $('#active-dot');
+  dot.className = status.active ? 'pulse-dot active' : 'pulse-dot';
+
+  if (status.step !== null) {
+    $('#stat-step').textContent = status.step.toLocaleString();
+  }
+  if (status.loss !== null) {
+    $('#stat-loss').textContent = status.loss.toFixed(6);
+  }
+  if (status.lr !== null) {
+    $('#stat-lr').textContent = status.lr.toExponential(2);
+  }
+  if (status.speed !== null) {
+    $('#stat-speed').textContent = status.speed.toFixed(1) + ' steps/s';
+  }
+  if (status.val_loss !== null) {
+    $('#stat-val-loss').textContent = status.val_loss.toFixed(4);
+  }
+  if (status.fid !== null) {
+    $('#stat-fid').textContent = status.fid.toFixed(1);
+  }
+  if (status.total_steps) {
+    totalSteps = status.total_steps;
+  }
+
+  // ETA + progress
+  if (status.step !== null && status.speed !== null && totalSteps) {
+    const remaining = totalSteps - status.step;
+    if (remaining > 0 && status.speed > 0) {
+      const secs = remaining / status.speed;
+      const h = Math.floor(secs / 3600);
+      const m = Math.floor((secs % 3600) / 60);
+      $('#stat-eta').textContent = h > 0 ? `${h}h ${m}m` : `${m}m`;
+    } else {
+      $('#stat-eta').textContent = 'done';
+    }
+    const pct = Math.min(100, (status.step / totalSteps) * 100);
+    $('#progress-wrap').style.display = 'flex';
+    $('#progress-fill').style.width = pct + '%';
+    $('#progress-text').textContent = `${status.step.toLocaleString()} / ${totalSteps.toLocaleString()} (${pct.toFixed(1)}%)`;
+  }
+}
+
+function appendLogEntries(entries) {
+  const labels = chart.data.labels;
+  const rawData = chart.data.datasets[0].data;
+  const lrData = chart.data.datasets[2].data;
+
+  const valLabels = evalChart.data.labels;
+  const valData = evalChart.data.datasets[0].data;
+  const fidData = evalChart.data.datasets[1].data;
+  let hasEval = false;
+
+  for (const e of entries) {
+    if ('loss' in e) {
+      labels.push(e.step);
+      rawData.push(e.loss);
+      lrData.push(e.lr ?? null);
+    }
+    if ('val_loss' in e) {
+      // Merge into eval chart — find or create step label
+      const idx = valLabels.indexOf(e.step);
+      if (idx >= 0) {
+        valData[idx] = e.val_loss;
+      } else {
+        // Insert in sorted order
+        let insertAt = valLabels.length;
+        for (let i = 0; i < valLabels.length; i++) {
+          if (valLabels[i] > e.step) { insertAt = i; break; }
+        }
+        valLabels.splice(insertAt, 0, e.step);
+        valData.splice(insertAt, 0, e.val_loss);
+        fidData.splice(insertAt, 0, null);
+      }
+      hasEval = true;
+    }
+    if ('fid' in e) {
+      const idx = valLabels.indexOf(e.step);
+      if (idx >= 0) {
+        fidData[idx] = e.fid;
+      } else {
+        let insertAt = valLabels.length;
+        for (let i = 0; i < valLabels.length; i++) {
+          if (valLabels[i] > e.step) { insertAt = i; break; }
+        }
+        valLabels.splice(insertAt, 0, e.step);
+        valData.splice(insertAt, 0, null);
+        fidData.splice(insertAt, 0, e.fid);
+      }
+      hasEval = true;
+    }
+  }
+
+  // Recompute full EMA smooth
+  chart.data.datasets[1].data = emaSmooth(rawData);
+  chart.update();
+
+  if (hasEval) {
+    $('#eval-chart-container').style.display = 'block';
+    evalChart.update();
+  }
+}
+
+function updateGallery(sampleFiles) {
+  const newFiles = sampleFiles.filter(f => !knownSamples.has(f));
+  if (newFiles.length === 0 && knownSamples.size === sampleFiles.length) return;
+
+  // Rebuild if there are new ones
+  for (const f of sampleFiles) knownSamples.add(f);
+
+  $('#sample-count').textContent = `${sampleFiles.length} images`;
+
+  gallery.innerHTML = '';
+  for (const f of sampleFiles) {
+    const card = document.createElement('div');
+    card.className = 'sample-card';
+    card.innerHTML = `
+      <img src="/samples/${currentRun}/${f}" alt="${f}" loading="lazy">
+      <div class="sample-label">${f.replace('.png', '')}</div>
+    `;
+    card.addEventListener('click', () => openLightbox(`/samples/${currentRun}/${f}`));
+    gallery.appendChild(card);
+  }
+}
+
+// --- Lightbox ---
+function openLightbox(src) {
+  lightboxImg.src = src;
+  lightbox.classList.add('open');
+}
+
+lightbox.addEventListener('click', () => {
+  lightbox.classList.remove('open');
+  lightboxImg.src = '';
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    lightbox.classList.remove('open');
+    lightboxImg.src = '';
+  }
+});
+
+// --- Event listeners ---
+runSelect.addEventListener('change', () => {
+  clearTimeout(pollTimer);
+  selectRun(runSelect.value);
+});
+
+// --- Init ---
+initChart();
+initEvalChart();
+loadRuns();
+</script>
+</body>
+</html>

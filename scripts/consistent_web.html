@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#E7E5EF">
+<title>sprite32 sets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #E7E5EF;
+  --surface: #F4F3F9;
+  --ink: #24213B;
+  --muted: #67637F;
+  --line: #CDC9DC;
+  --go: #FFD23F;
+  --go-deep: #E8B800;
+  --err: #B3261E;
+  --bar: calc(76px + env(safe-area-inset-bottom));
+  font-family: "Bricolage Grotesque", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-tap-highlight-color: transparent;
+}
+* { box-sizing: border-box; }
+body { margin: 0; padding-bottom: calc(var(--bar) + 24px); }
+button, textarea, input, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.wrap { max-width: 640px; margin: 0 auto; padding: 0 16px; }
+
+header { display: flex; align-items: baseline; justify-content: space-between; padding: 18px 0 10px; }
+.mark { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.03em; margin: 0; }
+.mark span { font-weight: 400; color: var(--muted); }
+.state { font-size: 0.875rem; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+.dot { width: 8px; height: 8px; border-radius: 1px; background: var(--muted); }
+.state[data-s="ready"] .dot { background: #2E9E5B; }
+.state[data-s="loading"] .dot { background: var(--go-deep); animation: blink 0.8s steps(2) infinite; }
+@keyframes blink { 50% { opacity: 0.2; } }
+
+.compose { background: var(--surface); border: 1.5px solid var(--line); border-radius: 14px; padding: 12px; }
+.compose label { display: block; font-size: 0.8125rem; font-weight: 600; color: var(--muted); margin: 0 0 2px 2px; }
+.compose textarea, .compose input[type="text"] {
+  width: 100%; border: 0; background: transparent; resize: none; outline: none;
+  font-size: 1.125rem; line-height: 1.4; padding: 2px;
+}
+.compose textarea { min-height: 3em; }
+.compose ::placeholder { color: #9b97b3; }
+.fill-row { border-top: 1.5px solid var(--line); margin-top: 8px; padding-top: 10px; }
+.fill-head { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.fill-head label { margin: 0; flex: 1; }
+.seg { display: inline-flex; border: 1.5px solid var(--ink); border-radius: 999px; overflow: hidden; }
+.seg button { border: 0; background: transparent; padding: 5px 12px; font-weight: 600; font-size: 0.875rem; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--surface); }
+.tools { display: flex; gap: 8px; margin-top: 10px; align-items: center; flex-wrap: wrap; }
+.chip {
+  border: 1.5px solid var(--ink); background: transparent; border-radius: 999px;
+  padding: 7px 14px; font-weight: 600; font-size: 0.9375rem; text-decoration: none; color: var(--ink);
+}
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--surface); }
+.chip.soft { border-color: var(--line); font-weight: 400; font-size: 0.875rem; padding: 5px 11px; }
+details.more { margin-top: 8px; font-size: 0.875rem; color: var(--muted); }
+details.more summary { cursor: pointer; padding: 4px 0; list-style: none; }
+details.more summary::-webkit-details-marker { display: none; }
+details.more[open] summary { color: var(--ink); }
+.opt { display: flex; align-items: center; gap: 10px; padding: 6px 0 2px; color: var(--ink); }
+.opt span:first-child { min-width: 7.5em; }
+.opt input[type="range"] { flex: 1; accent-color: var(--ink); }
+.opt output { min-width: 2.5em; text-align: right; font-weight: 600; }
+.opt select, .opt input[type="number"] { border: 1.5px solid var(--line); border-radius: 8px; background: var(--paper);
+  padding: 5px 8px; width: 7.5em; }
+.note { font-size: 0.8125rem; color: var(--muted); line-height: 1.4; margin: 2px 0 6px; }
+
+.result { margin-top: 22px; }
+.result-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+.result-head p { margin: 0; font-size: 0.9375rem; line-height: 1.35; color: var(--muted); }
+.result-head p b { color: var(--ink); font-weight: 600; }
+.bgs { display: flex; gap: 4px; flex-shrink: 0; }
+.bgs button { width: 30px; height: 30px; border-radius: 7px; border: 1.5px solid var(--line); padding: 0; }
+.bgs button[aria-pressed="true"] { border-color: var(--ink); box-shadow: inset 0 0 0 2px var(--surface); }
+.bgs .b-checker { background: repeating-conic-gradient(#C9C5D8 0 25%, #EEEDF4 0 50%) 0 0 / 10px 10px; }
+.bgs .b-light { background: #FAFAFC; }
+.bgs .b-dark { background: #24213B; }
+
+.stage { background: repeating-conic-gradient(#C9C5D8 0 25%, #EEEDF4 0 50%) 0 0 / 16px 16px; }
+body[data-bg="light"] .stage { background: #FAFAFC; }
+body[data-bg="dark"] .stage { background: #24213B; }
+.tiles { display: flex; flex-wrap: wrap; justify-content: center; }
+.tiles i { display: block; width: var(--t); height: var(--t); background-repeat: no-repeat;
+  image-rendering: pixelated; image-rendering: crisp-edges; }
+.main { border-radius: 12px; padding: 14px 6px; --t: 64px; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; align-items: center; }
+.empty { text-align: center; color: var(--muted); padding: 30px 12px; font-size: 0.9375rem; line-height: 1.5; }
+.error { color: var(--err); font-size: 0.9375rem; margin: 10px 0 0; }
+
+h2 { font-size: 1.125rem; font-weight: 800; margin: 30px 0 4px; letter-spacing: -0.01em; }
+.row { display: block; width: 100%; text-align: left; background: none; border: 0;
+  border-top: 1.5px solid var(--line); padding: 10px 0; }
+.row .tiles { --t: 32px; justify-content: flex-start; border-radius: 6px; padding: 4px; width: fit-content; max-width: 100%; }
+.row .cap { display: block; font-size: 0.8125rem; color: var(--muted); margin-top: 4px; }
+.row .cap b { color: var(--ink); }
+.row[aria-current="true"] .tiles { outline: 2.5px solid var(--ink); outline-offset: 1px; }
+.row.static { cursor: default; }
+.hist .cap { font-size: 0.9375rem; color: var(--ink); }
+.hist .when { color: var(--muted); font-size: 0.8125rem; }
+
+.bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 5;
+  padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+  background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); border-top: 1.5px solid var(--line); }
+.bar .wrap { display: flex; gap: 10px; padding: 0; }
+.go { position: relative; overflow: hidden; flex: 1; height: 56px; border: 2px solid var(--ink); border-radius: 14px;
+  background: var(--go); font-size: 1.25rem; font-weight: 800; letter-spacing: -0.01em; }
+.go .fill { position: absolute; inset: 0; width: 0; background: var(--go-deep); transition: width 0.25s linear; }
+.go .label { position: relative; }
+.go:disabled { cursor: default; }
+.go[data-busy="true"] { background: #F7E7A6; }
+
+@media (prefers-reduced-motion: reduce) {
+  .go .fill { transition: none; }
+  .state[data-s="loading"] .dot { animation: none; }
+}
+</style>
+</head>
+<body data-bg="checker">
+<div class="wrap">
+  <header>
+    <h1 class="mark">sprite32 <span>sets</span></h1>
+    <div class="state" id="state" data-s="cold" role="status"><span class="dot"></span><span id="stateText">connecting</span></div>
+  </header>
+
+  <section class="compose" aria-label="Template">
+    <label for="template">Template, with {} where the changing part goes</label>
+    <textarea id="template" rows="2" maxlength="300" autocomplete="off" autocapitalize="off" spellcheck="false">yellow warning triangle with a black {}</textarea>
+    <div class="fill-row">
+      <div class="fill-head">
+        <label for="fill" id="fillLabel">Word: one sprite per letter</label>
+        <div class="seg" role="group" aria-label="What fills the template">
+          <button type="button" data-mode="word" aria-pressed="true">Letters</button>
+          <button type="button" data-mode="items" aria-pressed="false">Items</button>
+        </div>
+      </div>
+      <input type="text" id="fill" value="SPRITE32" maxlength="240" autocomplete="off" autocapitalize="characters" spellcheck="false" enterkeyhint="go">
+    </div>
+    <div class="tools" id="presets" aria-label="Examples"></div>
+    <details class="more">
+      <summary>More settings</summary>
+      <div class="opt"><span>Seeds to try</span>
+        <select id="tries"><option>4</option><option selected>8</option><option>16</option></select></div>
+      <div class="opt"><span>Shared until</span>
+        <input type="range" id="share" min="1" max="15" step="0.5" value="5" aria-label="Noise level down to which the image is shared">
+        <output id="shareOut">5</output></div>
+      <p class="note">The sprites are one image until this noise level, then each goes its own way. Lower: more
+        alike, but letters start to blend into each other. Higher: clearer letters, outlines drift apart.</p>
+      <div class="opt"><span>First seed</span>
+        <input type="number" id="seed" min="0" max="2000000000" placeholder="random" inputmode="numeric"></div>
+    </details>
+  </section>
+
+  <section class="result" aria-live="polite">
+    <div class="result-head">
+      <p id="resultText">Nothing made yet.</p>
+      <div class="bgs" role="group" aria-label="Background">
+        <button class="b-checker" data-bg="checker" aria-pressed="true" aria-label="Checker background"></button>
+        <button class="b-light" data-bg="light" aria-pressed="false" aria-label="Light background"></button>
+        <button class="b-dark" data-bg="dark" aria-pressed="false" aria-label="Dark background"></button>
+      </div>
+    </div>
+    <div class="tiles stage main" id="main" hidden></div>
+    <div class="actions" id="actions" hidden>
+      <button class="chip" id="lock" type="button" aria-pressed="false">Lock the frame</button>
+      <a class="chip" id="dl1" download>PNG 32px</a>
+      <a class="chip" id="dl8" download>PNG 8x</a>
+    </div>
+    <p class="note" id="lockNote" hidden>Locked: every pixel that barely changed between the sprites is replaced
+      by its median, so the sprites are identical outside the part that changes.</p>
+    <div class="empty" id="empty">Write a template, type a word and press Make set.</div>
+    <p class="error" id="error" hidden></p>
+
+    <div id="triedBox" hidden>
+      <h2>Every seed tried</h2>
+      <p class="note" id="triedNote"></p>
+      <div id="tried"></div>
+      <h2>Without sharing</h2>
+      <p class="note">The same prompts with a separate seed each, for comparison.</p>
+      <div class="row static"><div class="tiles stage" id="plain"></div></div>
+    </div>
+  </section>
+
+  <section aria-label="Earlier sets">
+    <h2>Earlier</h2>
+    <div id="hist" class="hist"></div>
+  </section>
+</div>
+
+<div class="bar">
+  <div class="wrap">
+    <button class="go" id="go" type="button"><span class="fill" id="fillBar"></span><span class="label" id="goLabel">Make set</span></button>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const PRESETS = [
+  { name: "Warning signs", template: "yellow warning triangle with a black {}", mode: "word", fill: "SPRITE32" },
+  { name: "Stop signs", template: "red stop sign with a white {}", mode: "word", fill: "GAME" },
+  { name: "Keycaps", template: "pixel art grey keyboard key with a black {}", mode: "word", fill: "WASD" },
+  { name: "Badges", template: "pixel art {} in a round blue badge", mode: "items", fill: "sword, shield, potion, key, heart, skull" },
+];
+let mode = "word", cur = null, shownSeed = null, locked = false, busy = false;
+
+function setMode(m) {
+  mode = m;
+  document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", b.dataset.mode === m));
+  $("fillLabel").textContent = m === "word" ? "Word: one sprite per letter" : "Items, separated by commas";
+  $("fill").setAttribute("autocapitalize", m === "word" ? "characters" : "off");
+}
+document.querySelectorAll(".seg button").forEach(b => b.onclick = () => setMode(b.dataset.mode));
+for (const p of PRESETS) {
+  const b = document.createElement("button");
+  b.type = "button"; b.className = "chip soft"; b.textContent = p.name;
+  b.onclick = () => { $("template").value = p.template; $("fill").value = p.fill; setMode(p.mode); };
+  $("presets").append(b);
+}
+$("share").oninput = () => $("shareOut").textContent = $("share").value;
+document.querySelectorAll(".bgs button").forEach(b => b.onclick = () => {
+  document.body.dataset.bg = b.dataset.bg;
+  document.querySelectorAll(".bgs button").forEach(x => x.setAttribute("aria-pressed", x === b));
+});
+
+function tiles(el, url, n) {
+  // one strip image, shown as n wrapping tiles
+  el.replaceChildren();
+  const t = parseFloat(getComputedStyle(el).getPropertyValue("--t"));
+  for (let i = 0; i < n; i++) {
+    const c = document.createElement("i");
+    c.style.backgroundImage = `url(${url})`;
+    c.style.backgroundSize = `${n * t}px ${t}px`;
+    c.style.backgroundPosition = `${-i * t}px 0`;
+    el.append(c);
+  }
+}
+const img = (id, name, scale) => `/img/${id}/${name}.png` + (scale ? `?scale=${scale}` : "");
+const fitText = (r, s) => `${s.fit}/${r.items.length} ${r.letters ? "read right" : "fit their prompt"}`;
+
+function showSet(seed) {
+  shownSeed = seed;
+  const r = cur, n = r.items.length, name = (locked ? "lock_" : "set_") + seed;
+  // the largest whole number of screen pixels per sprite pixel that keeps the set on one line
+  const unit = 32 / (window.devicePixelRatio || 1), room = $("main").clientWidth - 12;
+  const k = Math.max(1, Math.min(Math.floor(room / n / unit), Math.floor(96 / unit)));
+  $("main").style.setProperty("--t", k * unit + "px");
+  tiles($("main"), img(r.id, name), n);
+  $("dl1").href = img(r.id, name); $("dl1").download = `sprite32_${name}.png`;
+  $("dl8").href = img(r.id, name, 8); $("dl8").download = `sprite32_${name}_8x.png`;
+  $("lock").setAttribute("aria-pressed", locked);
+  $("lockNote").hidden = !locked;
+  const s = r.sets.find(x => x.seed === seed);
+  const text = document.createElement("span");
+  const b = document.createElement("b"); b.textContent = r.template.replace("{}", "{" + r.items.join(r.letters ? "" : ", ") + "}");
+  text.append(b, ` · seed ${seed}${s.picked ? " (picked)" : ""} · ${fitText(r, s)} · ${r.model}, ${r.steps} steps, ${r.gpu_seconds}s`);
+  $("resultText").replaceChildren(text);
+  document.querySelectorAll("#tried .row").forEach(el => el.setAttribute("aria-current", +el.dataset.seed === seed));
+}
+
+function showResult(r) {
+  cur = r; locked = false;
+  history.replaceState(null, "", "#" + r.id);
+  const n = r.items.length;
+  $("empty").hidden = true; $("error").hidden = true;
+  $("main").hidden = false; $("actions").hidden = false; $("triedBox").hidden = false;
+  $("triedNote").textContent = "Tap a row to use it instead. " + (r.letters
+    ? "\"Read right\" is the model's own check of each letter against every other letter and digit; it is sometimes wrong."
+    : "\"Fit their prompt\" is the model's own check of each sprite against the other items; it is sometimes wrong.");
+  $("tried").replaceChildren();
+  for (const s of r.sets) {
+    const row = document.createElement("button");
+    row.type = "button"; row.className = "row"; row.dataset.seed = s.seed;
+    const strip = document.createElement("div"); strip.className = "tiles stage";
+    const cap = document.createElement("span"); cap.className = "cap";
+    if (s.picked) { const b = document.createElement("b"); b.textContent = "picked · "; cap.append(b); }
+    cap.append(`seed ${s.seed} · ${fitText(r, s)} · ${s.px} px differ`);
+    row.append(strip, cap);
+    row.onclick = () => { showSet(s.seed); window.scrollTo({ top: 0, behavior: "smooth" }); };
+    $("tried").append(row);
+    tiles(strip, img(r.id, "set_" + s.seed), n);
+  }
+  tiles($("plain"), img(r.id, "plain"), n);
+  showSet(r.sets.find(s => s.picked).seed);
+}
+$("lock").onclick = () => { locked = !locked; showSet(shownSeed); };
+
+function fail(msg) { $("error").textContent = msg; $("error").hidden = false; }
+function setBusy(b, label, p) {
+  busy = b; $("go").disabled = b; $("go").dataset.busy = b;
+  $("goLabel").textContent = label; $("fillBar").style.width = (p || 0) * 100 + "%";
+}
+
+async function make() {
+  if (busy) return;
+  $("error").hidden = true;
+  const body = { template: $("template").value, tries: +$("tries").value, share: +$("share").value };
+  const fill = $("fill").value;
+  if (mode === "word") body.word = fill; else body.items = fill.split(",").map(s => s.trim()).filter(Boolean);
+  if ($("seed").value !== "") body.seed = +$("seed").value;
+  setBusy(true, "Starting", 0);
+  try {
+    const res = await fetch("/api/make", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+    const j = await res.json();
+    if (!res.ok) throw new Error(typeof j.detail === "string" ? j.detail : "Check the template and the word.");
+    for (;;) {
+      await new Promise(r => setTimeout(r, 400));
+      const s = await (await fetch("/api/job/" + j.job)).json();
+      if (s.state === "done") { showResult(s.result); loadHistory(); break; }
+      if (s.state === "error") throw new Error(s.error);
+      setBusy(true, s.state === "warming" ? "Loading the model" : s.state === "queued" ? "Waiting" : "Drawing", s.progress);
+    }
+  } catch (e) { fail(e.message || "Something went wrong."); }
+  setBusy(false, "Make set", 0);
+}
+$("go").onclick = make;
+$("fill").addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); make(); } });
+
+async function loadHistory() {
+  try {
+    const h = await (await fetch("/api/history")).json();
+    $("hist").replaceChildren();
+    for (const r of h.items) {
+      const row = document.createElement("button");
+      row.type = "button"; row.className = "row";
+      const strip = document.createElement("div"); strip.className = "tiles stage";
+      const cap = document.createElement("span"); cap.className = "cap";
+      cap.textContent = r.template.replace("{}", "{" + r.items.join(r.letters ? "" : ", ") + "}");
+      const when = document.createElement("span"); when.className = "cap when"; when.textContent = r.created.replace("T", " ");
+      row.append(strip, cap, when);
+      row.onclick = () => {
+        $("template").value = r.template; $("fill").value = r.items.join(r.letters ? "" : ", ");
+        setMode(r.letters ? "word" : "items"); showResult(r); window.scrollTo({ top: 0, behavior: "smooth" });
+      };
+      $("hist").append(row);
+      tiles(strip, img(r.id, "set_" + r.sets.find(s => s.picked).seed), r.items.length);
+    }
+    if (!h.items.length) { const p = document.createElement("p"); p.className = "note"; p.textContent = "Nothing yet."; $("hist").append(p); }
+  } catch (e) {}
+}
+
+async function status() {
+  try {
+    const s = await (await fetch("/api/status")).json();
+    $("state").dataset.s = s.state;
+    $("stateText").textContent = { cold: "asleep", loading: "loading", ready: "ready" }[s.state] + " · " + s.model;
+  } catch (e) { $("state").dataset.s = "cold"; $("stateText").textContent = "offline"; }
+}
+async function openSaved() {
+  const id = location.hash.slice(1);
+  if (!/^[0-9a-f-]{20,}$/.test(id)) return;
+  try {
+    const res = await fetch("/api/set/" + id);
+    if (!res.ok) return;
+    const r = await res.json();
+    $("template").value = r.template; $("fill").value = r.items.join(r.letters ? "" : ", ");
+    setMode(r.letters ? "word" : "items"); showResult(r);
+  } catch (e) {}
+}
+status(); setInterval(status, 5000); loadHistory(); openSaved();
+</script>
+</body>
+</html>
