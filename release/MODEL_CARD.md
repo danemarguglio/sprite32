@@ -1,6 +1,6 @@
 ---
 tags: [text-to-image, diffusion, pixel-art, icons, sprites]
-library_name: diffusers
+library_name: sprite32
 pipeline_tag: text-to-image
 license: apache-2.0
 ---
@@ -9,6 +9,8 @@ license: apache-2.0
 
 Text to 32x32 RGBA sprites: pixel art, icons, emoji-style images and short rendered text. Trained from
 scratch on 660k images. Code: https://github.com/danemarguglio/sprite32
+
+Try it online: https://sprite32.com
 
 ![48 sprites drawn by sprite32 1.0](samples.png)
 

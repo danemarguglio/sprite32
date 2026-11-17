@@ -175,11 +175,11 @@ def strip(xs, path, zoom=1):
     strip_image(xs, zoom).save(path)
 
 
-def margins(S, x, prompts, mask, others=()):
+def margins(S, x, prompts, mask, others=(), sigmas=(1.5, 3.0), draws=2):
     """Per sprite: error under the best other prompt minus error under its own. Above 0 = fits its own best.
-    others: more prompts that no sprite should fit."""
+    others: more prompts that no sprite should fit. Fewer sigmas or draws: cheaper, noisier."""
     n = len(prompts)
-    err = prompt_errors(S, x, list(prompts) + list(others), mask).view(-1, n, n + len(others))
+    err = prompt_errors(S, x, list(prompts) + list(others), mask, sigmas, draws).view(-1, n, n + len(others))
     own = err[:, torch.arange(n), torch.arange(n)]
     err[:, torch.arange(n), torch.arange(n)] = float("inf")
     for i, p in enumerate(prompts):  # a repeated letter is not a wrong answer
@@ -213,14 +213,16 @@ def lock(x, mask):
     return mask * x + (1 - mask) * x.median(0, keepdim=True).values
 
 
-def tried_sets(S, prompts, others=(), seed=1, tries=8, share=5.0, mask_thr=0.4, progress=None):
+def tried_sets(S, prompts, others=(), seed=1, tries=8, share=5.0, mask_thr=0.4, progress=None,
+               sigmas=(1.5, 3.0), draws=2):
     """trunk for `tries` seeds. One dict per seed: seed, set, mask, fit (sprites that fit their own prompt
-    best), margin (the weakest sprite's), px (pixels that differ over the set), picked."""
+    best), margin (the weakest sprite's), px (pixels that differ over the set), picked.
+    sigmas, draws: how thoroughly each sprite is checked against the prompts (margins)."""
     sets = []
     for k, sd in enumerate(range(seed, seed + tries)):
         x = trunk(S, prompts, sd, share)
         mask = change_mask(x, mask_thr)
-        mg = margins(S, x, prompts, mask, others)[0]
+        mg = margins(S, x, prompts, mask, others, sigmas, draws)[0]
         sets.append(dict(seed=sd, set=x, mask=mask, fit=int((mg > 0).sum()), margin=float(mg.min()),
                          px=int(change_mask(x, mask_thr, grow=0).sum()), picked=False))
         if progress:

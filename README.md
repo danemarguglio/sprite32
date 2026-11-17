@@ -2,6 +2,8 @@
 
 Text in, 32x32 RGBA sprite out: pixel art, icons, emoji and short bits of text.
 
+Try it online at [sprite32.com](https://sprite32.com).
+
 ![48 sprites drawn by sprite32 1.0](release/samples.png)
 
 These are picked by hand from 16 seeds per prompt. The prompts and seeds are in
@@ -19,7 +21,7 @@ There are two versions:
 | One sprite on an RTX 5090 | 0.88 s | 0.16 s |
 | One sprite on a 16-core CPU | 4.0 s | 0.70 s |
 | Peak GPU memory | 9.1 GiB | 2.6 GiB |
-| Download | about 8.7 GB | about 2.3 GB |
+| Download, text encoders included | about 8.7 GB | about 2.3 GB |
 
 Fast is the same UNet, trained a little further so that it gives the guided result in one pass instead of
 two, and it gets by on 12 steps instead of 35. Start with it. The full model scores a little better (see
@@ -37,8 +39,8 @@ python hf_sample.py weights/sprite32-1.0-fast --steps 12 --n 8 --seed 1 --out sw
     --prompts "pixel art green sword sprite with a brown handle"
 ```
 
-The weights are on [Hugging Face](https://huggingface.co/danemarguglio/sprite32). The fast version is a
-1.8 GB download, and the first run fetches CLIP B/32 on top of that.
+The weights are on [Hugging Face](https://huggingface.co/danemarguglio/sprite32). The fast version's folder is
+1.8 GB, and its first run fetches the CLIP B/32 text model on top of that: about 2.3 GB in all, as in the table.
 
 For the full model, download `sprite32-1.0/*` instead and leave out `--steps 12`. Its first run also fetches
 Qwen3-4B (about 8 GB). The full model runs on an Apple-silicon Mac too; the fast one has only been tried on
